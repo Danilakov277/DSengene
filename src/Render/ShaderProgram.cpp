@@ -6,13 +6,13 @@ namespace Renderer {
 	ShaderProgram::ShaderProgram(const std::string& vertexShader, const std::string& fragmentShader)
 	{
 		GLuint vertexShaderID;
-		if(createShader(vertexShader, GL_VERTEX_SHADER,vertexShaderID));
+		if(!createShader(vertexShader, GL_VERTEX_SHADER,vertexShaderID))
 		{
 			std::cerr << "VERTEX_SHADER compile time error" << std::endl;
 			return;
 		}
 		GLuint fragmentShaderID;
-		if (createShader(fragmentShader, GL_FRAGMENT_SHADER, fragmentShaderID));
+		if (!createShader(fragmentShader, GL_FRAGMENT_SHADER, fragmentShaderID))
 		{
 			std::cerr << "FRAGMENT_SHADER compile time error" << std::endl;
 			glDeleteShader(vertexShaderID);
