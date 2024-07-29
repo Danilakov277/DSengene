@@ -47,7 +47,7 @@ namespace Renderer {
 		glDeleteProgram(ID);
 	}
 
-	bool ShaderProgram::use() const
+	void ShaderProgram::use() const
 	{
 		glUseProgram(ID);
 	}

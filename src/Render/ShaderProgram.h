@@ -11,7 +11,7 @@ namespace Renderer {
 		ShaderProgram(const std::string& vertexShader, const std::string& fragmentShader);
 		~ShaderProgram();
 		bool IsCompiled() const { return is_compiled; }
-		bool use() const;
+		void use() const;
 
 		ShaderProgram() = delete;
 		ShaderProgram(ShaderProgram&) = delete;
