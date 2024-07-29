@@ -60,6 +60,7 @@ namespace Renderer {
 
 		shaderProgram.ID = 0;
 		shaderProgram.is_compiled = false;
+		return *this;
 	}
 
 	ShaderProgram::ShaderProgram(ShaderProgram&& shaderProgram) noexcept
