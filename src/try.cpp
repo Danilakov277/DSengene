@@ -1,11 +1,14 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glm/vec2.hpp>
 
 #include <iostream>
 
 #include "Render/ShaderProgram.h"
 
 #include "Resources/ResourcesManger.h"
+
+#include "Render/Texture2D.h"
 
 //add pointers besed on traengle
 GLfloat point[] =
@@ -22,6 +25,12 @@ GLfloat colars[] =
 0.0f,1.0f,0.0f,
 0.0f,0.0f,1.0f
 };
+GLfloat texCord[] =
+{
+0.5f,1.0f,
+1.0f,0.0f,
+0.0f,0.0f
+};
 
 //add call back functon
 void error_callback(int error, const char* description)
@@ -29,16 +38,15 @@ void error_callback(int error, const char* description)
     std::cout << "Eror! " << description << std::endl;
 }
 
+glm::ivec2 g_windowSize(640, 480);
 //start window size
-int MonitorXsize = 640;
-int MonitorYsize = 480;
 
 //function to change size of app
 void glfwWindowSizeCallback(GLFWwindow* window, int X,int Y)
 {
-    MonitorXsize = X;
-    MonitorYsize = Y;
-    glViewport(0, 0, MonitorXsize, MonitorYsize);
+    g_windowSize.x = X;
+    g_windowSize.y = Y;
+    glViewport(0, 0, g_windowSize.x, g_windowSize.y);
 }
 
 //create key action function 
@@ -68,7 +76,7 @@ int main(int argc, char** argv)
     
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(MonitorXsize, MonitorYsize, "DSEngene", NULL, NULL);
+    window = glfwCreateWindow(g_windowSize.x, g_windowSize.y, "DSEngene", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -106,6 +114,8 @@ int main(int argc, char** argv)
             std::cerr << "cant create shader program: " << "Defaultshader" << std::endl;
             return -1;
         }
+
+        auto tex = resourceManger.loadTexture("DefayltTextures", "res/textures/map_16x16.png");
         //create buffers for sheders
         GLuint points_vbo = 0;
         glGenBuffers(1, &points_vbo);
@@ -116,6 +126,11 @@ int main(int argc, char** argv)
         glGenBuffers(1, &color_vbo);
         glBindBuffer(GL_ARRAY_BUFFER, color_vbo);
         glBufferData(GL_ARRAY_BUFFER, sizeof(colars), colars, GL_STATIC_DRAW);
+
+        GLuint texCord_vbo = 0;
+        glGenBuffers(1, &texCord_vbo);
+        glBindBuffer(GL_ARRAY_BUFFER, texCord_vbo);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(texCord), texCord, GL_STATIC_DRAW);//!!!
 
         //create array buffer
         GLuint vao = 0;
@@ -131,6 +146,14 @@ int main(int argc, char** argv)
         glBindBuffer(GL_ARRAY_BUFFER, color_vbo);
         glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 
+        glEnableVertexAttribArray(2);
+        glBindBuffer(GL_ARRAY_BUFFER, texCord_vbo);
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
+
+        pDefaultShaderProgram->use();
+        pDefaultShaderProgram->setInt("tex",0);
+
+
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
         {
@@ -141,6 +164,7 @@ int main(int argc, char** argv)
             //sheder draw
             pDefaultShaderProgram->use();
             glBindVertexArray(vao);
+            tex->bind();
             glDrawArrays(GL_TRIANGLES, 0, 3);
 
             /* Swap front and back buffers */

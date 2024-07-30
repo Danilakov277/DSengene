@@ -6,9 +6,12 @@ project(${PROJECT_NAME})
 add_executable(${PROJECT_NAME} 
     src/try.cpp 
     src/Render/ShaderProgram.cpp
+    src/Render/Texture2D.h
+    src/Render/Texture2D.cpp
     src/Render/ShaderProgram.h
     src/Resources/ResourcesManger.cpp
     src/Resources/ResourcesManger.h
+    src/Resources/stb_image.h
 )
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
@@ -21,6 +24,8 @@ target_link_libraries(${PROJECT_NAME} glfw)
 
 add_subdirectory(external/glad)
 target_link_libraries(${PROJECT_NAME} glad)
+
+include_directories(external/glm)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/)
 
