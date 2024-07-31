@@ -1,5 +1,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glm/mat4x4.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 #include <glm/vec2.hpp>
 
 #include <iostream>
@@ -10,12 +12,14 @@
 
 #include "Render/Texture2D.h"
 
+#include "Render/Sprite.h"
+
 //add pointers besed on traengle
 GLfloat point[] =
 {
-0.0f, 0.5f,0.0f,
-0.5f,-0.5f,0.0f,
--0.5f,-0.5f,0.0f
+0.0f, 50.f,0.0f,
+50.f,-50.f,0.0f,
+-50.f,-50.f,0.0f
 };
 
 //colors for traengle
@@ -114,8 +118,17 @@ int main(int argc, char** argv)
             std::cerr << "cant create shader program: " << "Defaultshader" << std::endl;
             return -1;
         }
+        auto pSpriteShaderProgram = resourceManger.loadShaders("SpriteShader", "res/shaders/vSprite.txt", "res/shaders/fSprite.txt");
+        if (!pSpriteShaderProgram)
+        {
+            std::cerr << "cant create shader program: " << "Spriteshader" << std::endl;
+            return -1;
+        }
 
         auto tex = resourceManger.loadTexture("DefayltTextures", "res/textures/map_16x16.png");
+
+        auto pSprite = resourceManger.loadSprite("NewSprite", "DefayltTextures", "SpriteShader", 50, 100);
+        pSprite->setPosition(glm::vec2(300.f, 100.f));
         //create buffers for sheders
         GLuint points_vbo = 0;
         glGenBuffers(1, &points_vbo);
@@ -153,6 +166,22 @@ int main(int argc, char** argv)
         pDefaultShaderProgram->use();
         pDefaultShaderProgram->setInt("tex",0);
 
+        glm::mat4 modelMatrix_1 = glm::mat4(1.f);
+        modelMatrix_1 = glm::translate(modelMatrix_1, glm::vec3(100.f, 50.f, 0.f));
+
+        glm::mat4 modelMatrix_2 = glm::mat4(1.f);
+        modelMatrix_2 = glm::translate(modelMatrix_2, glm::vec3(590.f, 50.f, 0.f));
+
+        glm::mat4 projectionMatrix = glm::ortho(0.f, static_cast<float>(g_windowSize.x), 0.f, static_cast<float>(g_windowSize.y), -100.f, 100.f);
+
+
+        pDefaultShaderProgram->setMatrix4("projectionMat", projectionMatrix);
+
+
+        pSpriteShaderProgram->use();
+        pSpriteShaderProgram->setInt("tex", 0);
+        pSpriteShaderProgram->setMatrix4("projectionMat", projectionMatrix);
+
 
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
@@ -165,7 +194,13 @@ int main(int argc, char** argv)
             pDefaultShaderProgram->use();
             glBindVertexArray(vao);
             tex->bind();
+
+            pDefaultShaderProgram->setMatrix4("modelMat", modelMatrix_1);
             glDrawArrays(GL_TRIANGLES, 0, 3);
+            pDefaultShaderProgram->setMatrix4("modelMat", modelMatrix_2);
+            glDrawArrays(GL_TRIANGLES, 0, 3);
+
+            pSprite->render();
 
             /* Swap front and back buffers */
             glfwSwapBuffers(window);
