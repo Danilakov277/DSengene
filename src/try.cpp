@@ -16,6 +16,10 @@
 
 #include <vector>
 
+#include "Render/AnimatedSprite.h"
+
+#include <chrono>
+
 //add pointers besed on traengle
 GLfloat point[] =
 {
@@ -152,8 +156,20 @@ int main(int argc, char** argv)
             "bush"};
         auto pTextureAtlas = resourceManger.loatTextureAtlas("DefaultTextureAtlas", subTexturesNames, "res/textures/map_8x8.png", 8, 8);
 
-        auto pSprite = resourceManger.loadSprite("NewSprite", "DefaultTextureAtlas", "SpriteShader", 300, 300,"woter_1");
+        auto pSprite = resourceManger.loadSprite("NewSprite", "DefaultTextureAtlas", "SpriteShader", 100, 100,"bush");
         pSprite->setPosition(glm::vec2(300.f, 100.f));
+
+        auto pAnimatedSprite = resourceManger.loadAnimatedSprite("NewAnimatedSprite", "DefaultTextureAtlas", "SpriteShader", 100, 100, "bush");
+        pAnimatedSprite->setPosition(glm::vec2(300.f, 300.f));
+        std::vector<std::pair<std::string, uint64_t>> waterState;
+        waterState.emplace_back(std::make_pair<std::string, uint64_t>("woter_1",1000000000));
+        waterState.emplace_back(std::make_pair<std::string, uint64_t>("woter_2",1000000000));
+        waterState.emplace_back(std::make_pair<std::string, uint64_t>("woter_3",1000000000));
+
+        pAnimatedSprite->insertState("woterState",std::move(waterState));
+
+        pAnimatedSprite->setState("woterState");
+
         //create buffers for sheders
         GLuint points_vbo = 0;
         glGenBuffers(1, &points_vbo);
@@ -208,9 +224,16 @@ int main(int argc, char** argv)
         pSpriteShaderProgram->setMatrix4("projectionMat", projectionMatrix);
 
 
+        auto lastTime = std::chrono::high_resolution_clock::now();
+
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
         {
+
+            auto curerentTime = std::chrono::high_resolution_clock::now();
+            uint64_t duration = std::chrono::duration_cast<std::chrono::nanoseconds>(curerentTime - lastTime).count();
+            lastTime = curerentTime;
+            pAnimatedSprite->update(duration);
             /* Render here */
             glClear(GL_COLOR_BUFFER_BIT);
 
@@ -226,6 +249,7 @@ int main(int argc, char** argv)
             glDrawArrays(GL_TRIANGLES, 0, 3);
 
             pSprite->render();
+            pAnimatedSprite->render();
 
             /* Swap front and back buffers */
             glfwSwapBuffers(window);

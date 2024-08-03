@@ -1,104 +1,87 @@
+#include"AnimatedSprite.h"
 #include"Sprite.h"
 #include "ShaderProgram.h"
 #include "Texture2D.h"
-
+#include<iostream>
 #include <glm/mat4x4.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 namespace Renderer
 {
-	Sprite::Sprite(const std::shared_ptr<Texture2D> pTexure,
-		const std::string initialSubTexture,
-		const std::shared_ptr<ShaderProgram> pShaderProgram,
-		const glm::vec2& position, const glm::vec2& size, const float rotation):
-		m_pTexture(std::move(pTexure)),
-		m_pShaderProgram(std::move(pShaderProgram)),
-		m_position(position),
-		m_size(size),
-		m_rotation(rotation)
+    AnimatedSprite::AnimatedSprite(const std::shared_ptr<Texture2D> pTexure,
+        const std::string initialSubTexture,
+        const std::shared_ptr<ShaderProgram> pShaderProgram,
+        const glm::vec2& position,
+        const glm::vec2& size,
+        const float rotation):
+        Sprite(std::move(pTexure),std::move(initialSubTexture),std::move(pShaderProgram),position,size,rotation)
+    {
+        m_pCurrentAnimationDurations = m_statesMap.end();
+    }
+    void AnimatedSprite::insertState(std::string state, std::vector<std::pair<std::string, uint64_t>> subTexturesDuration)
+    {
+        m_statesMap.emplace(std::move(state), std::move(subTexturesDuration));
+    }
+	void AnimatedSprite::render() const
 	{
-		const GLfloat vertexCoord[] =
-		{
-			0.f,0.f,
-			0.f,1.f,
-			1.f,1.f,
 
-			1.f,1.f,
-			1.f,0.f,
-			0.f,0.f
-		};
+        if (m_dirty)
+        {
 
-		auto subTexture = pTexure->getSubTexture(std::move(initialSubTexture));
+        auto subTexture = m_pTexture->getSubTexture(m_pCurrentAnimationDurations->second[m_currentFrame].first);
 
-		const GLfloat textureCoord[] =
-		{
-			subTexture.leftBottomUV.x,subTexture.leftBottomUV.y,
-			subTexture.leftBottomUV.x,subTexture.rightTopUV.y,
-			subTexture.rightTopUV.x,subTexture.rightTopUV.y,
 
-			subTexture.rightTopUV.x,subTexture.rightTopUV.y,
-			subTexture.rightTopUV.x,subTexture.leftBottomUV.y,
-			subTexture.leftBottomUV.x,subTexture.leftBottomUV.y
-		};
 
-		glGenVertexArrays(1, &m_VAO );
-		glBindVertexArray(m_VAO);
+        const GLfloat textureCoord[] =
+        {
+            subTexture.leftBottomUV.x,subTexture.leftBottomUV.y,
+            subTexture.leftBottomUV.x,subTexture.rightTopUV.y,
+            subTexture.rightTopUV.x,subTexture.rightTopUV.y,
 
-		glGenBuffers(1, &m_vertexCootdsVBO);
-		glBindBuffer(GL_ARRAY_BUFFER, m_vertexCootdsVBO);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertexCoord), &vertexCoord, GL_STATIC_DRAW);
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 2, GL_FLOAT,GL_FALSE, 0, nullptr);
+            subTexture.rightTopUV.x,subTexture.rightTopUV.y,
+            subTexture.rightTopUV.x,subTexture.leftBottomUV.y,
+            subTexture.leftBottomUV.x,subTexture.leftBottomUV.y
+        };
 
-		glGenBuffers(1, &m_textureCoordsVBO);
-		glBindBuffer(GL_ARRAY_BUFFER, m_textureCoordsVBO);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(textureCoord), &textureCoord, GL_STATIC_DRAW);
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
+        glBindBuffer(GL_ARRAY_BUFFER, m_textureCoordsVBO);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(textureCoord), &textureCoord);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+        m_dirty = false;
+        }
 
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-		glBindVertexArray(0);
+        Sprite::render();
 
 	}
-	Sprite::~Sprite()
-	{
-		glDeleteBuffers(1, &m_vertexCootdsVBO);
-		glDeleteBuffers(1, &m_textureCoordsVBO);
-		glDeleteVertexArrays(1, &m_VAO);
-	}
-	void Sprite::render() const
-	{
-		m_pShaderProgram->use();
+    void AnimatedSprite::update(const uint64_t delta)
+    {
+        if (m_pCurrentAnimationDurations != m_statesMap.end())
+        {
+            m_currentAnimationTime += delta;
+            while (m_currentAnimationTime >= m_pCurrentAnimationDurations->second[m_currentFrame].second)
+            {
+                m_currentAnimationTime -= m_pCurrentAnimationDurations->second[m_currentFrame].second;
+                ++m_currentFrame;
+                m_dirty = true;
+                if (m_currentFrame == m_pCurrentAnimationDurations->second.size())
+                {
+                    m_currentFrame = 0;
+                }
+            }
 
-		glm::mat4 model(1.f);
-
-		model = glm::translate(model, glm::vec3(m_position, 0.0f));
-		model = glm::translate(model, glm::vec3(0.5f * m_size.x, 0.5f * m_size.y, 0.0f));
-		model = glm::rotate(model, glm::radians(m_rotation), glm::vec3(0.f, 0.f, 1.f));
-		model = glm::translate(model, glm::vec3(-0.5f * m_size.x, -0.5f * m_size.y, 0.0f));
-		model = glm::scale(model, glm::vec3(m_size, 1.f));
-
-		glBindVertexArray(m_VAO);
-		m_pShaderProgram->setMatrix4("modelMat", model);
-
-		glActiveTexture(GL_TEXTURE0);
-		m_pTexture->bind();
-
-		glDrawArrays(GL_TRIANGLES, 0, 6);
-
-		glBindVertexArray(0);
-
-
-	}
-	void Sprite::setPosition(const glm::vec2& position)
-	{
-		m_position = position;
-	}
-	void Sprite::setSize(const glm::vec2& size)
-	{
-		m_size = size;
-	}
-	void Sprite::setRotation(const float rotation)
-	{
-		m_rotation = rotation;
-	}
+        }
+    }
+    void AnimatedSprite::setState(const std::string& newState)
+    {
+        auto it = m_statesMap.find(newState);
+        if (it == m_statesMap.end())
+        {
+            std::cout << "Cant Found animation state: " << newState << std::endl;
+            return;
+        }
+        if (it != m_pCurrentAnimationDurations) {
+            m_currentAnimationTime = 0;
+            m_currentFrame = 0;
+            m_pCurrentAnimationDurations = it;
+            m_dirty = true;
+        }
+    }
 }
