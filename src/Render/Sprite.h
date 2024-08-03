@@ -5,6 +5,7 @@
 #include <glm/vec2.hpp>
 
 #include <memory>
+#include<string>
 
 namespace Renderer
 {
@@ -15,6 +16,7 @@ namespace Renderer
 	{
 	public:
 		Sprite(const std::shared_ptr<Texture2D> pTexure,
+			const std::string initialSubTexture,
 			const std::shared_ptr<ShaderProgram> pShaderProgram,
 			const glm::vec2& position = glm::vec2(0.f),
 			const glm::vec2& size = glm::vec2(1.f),
@@ -39,6 +41,8 @@ namespace Renderer
 		GLuint m_VAO;
 		GLuint m_vertexCootdsVBO;
 		GLuint m_textureCoordsVBO;
+		glm::vec2 m_currentLeftBotomUV;
+		glm::vec2 m_currentRightTopUV;
 
 	};
 

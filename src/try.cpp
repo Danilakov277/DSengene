@@ -14,6 +14,8 @@
 
 #include "Render/Sprite.h"
 
+#include <vector>
+
 //add pointers besed on traengle
 GLfloat point[] =
 {
@@ -125,9 +127,32 @@ int main(int argc, char** argv)
             return -1;
         }
 
-        auto tex = resourceManger.loadTexture("DefayltTextures", "res/textures/map_16x16.png");
+        auto tex = resourceManger.loadTexture("DefayltTextures", "res/textures/map_8x8.png");
 
-        auto pSprite = resourceManger.loadSprite("NewSprite", "DefayltTextures", "SpriteShader", 50, 100);
+        std::vector<std::string> subTexturesNames = { 
+            "block",
+            "topLeftBlock",
+            "topRightBlock",
+            "topBlock",
+            "bottomLeftBlock",
+            "rightBlock",
+            "bottomLeftTopRightBlock",
+            "bottomRightZeroBlock",
+            "bottomRightBlock",
+            "topLeftBottomRightBlock",
+            "leftBlock",
+            "bottomLeftZerroBlock",
+            "bottomBlock",
+            "topRightZerroBlock",
+            "topLeftZerroBlock",
+            "woter_1",
+            "woter_2",
+            "woter_3",
+            "beton",
+            "bush"};
+        auto pTextureAtlas = resourceManger.loatTextureAtlas("DefaultTextureAtlas", subTexturesNames, "res/textures/map_8x8.png", 8, 8);
+
+        auto pSprite = resourceManger.loadSprite("NewSprite", "DefaultTextureAtlas", "SpriteShader", 300, 300,"woter_1");
         pSprite->setPosition(glm::vec2(300.f, 100.f));
         //create buffers for sheders
         GLuint points_vbo = 0;
