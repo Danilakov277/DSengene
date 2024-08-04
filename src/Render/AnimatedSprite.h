@@ -21,7 +21,7 @@ namespace Renderer
 
 		void insertState(std::string state, std::vector<std::pair<std::string, uint64_t>> subTexturesDuration);
 		void render() const override;
-		void update(const size_t delta);
+		void update(const uint64_t delta);
 		void setState(const std::string& newState);
 
 	private:
