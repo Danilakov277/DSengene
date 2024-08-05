@@ -16,10 +16,29 @@
 #define STBI_ONLY_PNG
 #include "stb_image.h"
 
-ResourceManger::ResourceManger(const std::string& executablePath)
+
+
+ ResourceManger::ShaderProgramMap ResourceManger::m_shaderProgram;
+ ResourceManger::TexturesMap ResourceManger::m_textures;
+ ResourceManger::SpriteMap ResourceManger::m_sprites;
+ ResourceManger::AnimatedSpriteeMap ResourceManger::m_AnimatedSprite;
+ std::string ResourceManger::m_path;
+
+
+void ResourceManger::setExecutablePath(const std::string& executablePath)
 {
 	size_t found = executablePath.find_last_of("/\\");
 	m_path = executablePath.substr(0, found);
+}
+
+void ResourceManger::unloadAllResources()
+{
+	m_shaderProgram.clear();
+	m_textures.clear();
+	m_sprites.clear();
+	m_AnimatedSprite.clear();
+	//m_path.clear();
+
 }
 
 std::shared_ptr<Renderer::ShaderProgram> ResourceManger::loadShaders(const std::string& shaderName, const std::string& vertexPath, const std::string& fragmentPath)
@@ -134,7 +153,7 @@ std::shared_ptr<Renderer::Sprite> ResourceManger::getSprite(const std::string& s
 	return nullptr;
 }
 
-std::string ResourceManger::getFileString(const std::string& relatveFilePath) const
+std::string ResourceManger::getFileString(const std::string& relatveFilePath)
 {
 	std::ifstream f;
 	f.open(m_path + "/" + relatveFilePath.c_str(), std::ios::in | std::ios::binary);
@@ -214,3 +233,5 @@ std::shared_ptr<Renderer::AnimatedSprite> ResourceManger::getAnimatedSprite(cons
 	std::cerr << "Cant find animated the sprite:" << spriteName << std::endl;
 	return nullptr;
 }
+
+
