@@ -18,6 +18,8 @@ add_executable(${PROJECT_NAME}
     src/Render/AnimatedSprite.h
 	src/Game/Game.cpp
 	src/Game/Game.h
+	src/Game/Tank.cpp
+	src/Game/Tank.h
 )
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
