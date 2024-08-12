@@ -21,10 +21,7 @@ namespace Renderer
 			0.f,0.f,
 			0.f,1.f,
 			1.f,1.f,
-
-			1.f,1.f,
-			1.f,0.f,
-			0.f,0.f
+			1.f,0.f
 		};
 
 		auto subTexture = m_pTexture->getSubTexture(std::move(initialSubTexture));
@@ -34,10 +31,12 @@ namespace Renderer
 			subTexture.leftBottomUV.x,subTexture.leftBottomUV.y,
 			subTexture.leftBottomUV.x,subTexture.rightTopUV.y,
 			subTexture.rightTopUV.x,subTexture.rightTopUV.y,
-
-			subTexture.rightTopUV.x,subTexture.rightTopUV.y,
-			subTexture.rightTopUV.x,subTexture.leftBottomUV.y,
-			subTexture.leftBottomUV.x,subTexture.leftBottomUV.y
+			subTexture.rightTopUV.x,subTexture.leftBottomUV.y
+		};
+		const GLint indices[] =
+		{
+          0,1,2,
+		  2,3,0
 		};
 
 		glGenVertexArrays(1, &m_VAO );
@@ -55,14 +54,20 @@ namespace Renderer
 		glEnableVertexAttribArray(1);
 		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
 
+		glGenBuffers(1, &m_EBO);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), &indices, GL_STATIC_DRAW);
+
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindVertexArray(0);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
 	}
 	Sprite::~Sprite()
 	{
 		glDeleteBuffers(1, &m_vertexCootdsVBO);
 		glDeleteBuffers(1, &m_textureCoordsVBO);
+		glDeleteBuffers(1, &m_EBO);
 		glDeleteVertexArrays(1, &m_VAO);
 	}
 	void Sprite::render() const
@@ -84,6 +89,7 @@ namespace Renderer
 		m_pTexture->bind();
 
 		glDrawArrays(GL_TRIANGLES, 0, 6);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 
 		glBindVertexArray(0);
 

@@ -44,6 +44,8 @@ namespace Renderer
 		glm::vec2 m_currentLeftBotomUV;
 		glm::vec2 m_currentRightTopUV;
 
+		GLuint m_EBO;
+
 	};
 
 }
