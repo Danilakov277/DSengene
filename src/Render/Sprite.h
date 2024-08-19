@@ -4,6 +4,9 @@
 
 #include <glm/vec2.hpp>
 
+#include "VertexBuffer.h"
+#include "IndexBuffer.h"
+
 #include <memory>
 #include<string>
 
@@ -38,13 +41,19 @@ namespace Renderer
 		glm::vec2 m_position;
 		glm::vec2 m_size;
 		float m_rotation;
+
+
 		GLuint m_VAO;
-		GLuint m_vertexCootdsVBO;
-		GLuint m_textureCoordsVBO;
+
+		VertexBuffer m_vertexCoordBuffer;
+		VertexBuffer m_textureCoordBuffer;
+
+		IndexBuffer m_indexBuffer;
+
+
+
 		glm::vec2 m_currentLeftBotomUV;
 		glm::vec2 m_currentRightTopUV;
-
-		GLuint m_EBO;
 
 	};
 
