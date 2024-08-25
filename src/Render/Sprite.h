@@ -7,6 +7,8 @@
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
 
+#include "VertexArray.h"
+
 #include <memory>
 #include<string>
 
@@ -42,8 +44,7 @@ namespace Renderer
 		glm::vec2 m_size;
 		float m_rotation;
 
-
-		GLuint m_VAO;
+		VertexArray m_vertexArray;
 
 		VertexBuffer m_vertexCoordBuffer;
 		VertexBuffer m_textureCoordBuffer;

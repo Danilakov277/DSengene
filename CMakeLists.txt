@@ -22,6 +22,10 @@ add_executable(${PROJECT_NAME}
 	src/Game/Tank.h
 	src/Render/VertexBuffer.cpp
 	src/Render/VertexBuffer.h
+	src/Render/VertexBufferLayout.h
+	src/Render/VertexBufferLayout.cpp
+	src/Render/VertexArray.h
+	src/Render/VertexArray.cpp
 	src/Render/IndexBuffer.cpp
 	src/Render/IndexBuffer.h
 )
