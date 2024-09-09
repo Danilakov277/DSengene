@@ -22,6 +22,8 @@
 
 #include "Game/Game.h"
 
+#include"Render/Renderer.h"
+
 glm::ivec2 g_windowSize(640, 480);
 Game g_game(g_windowSize);
 //add call back functon
@@ -37,7 +39,7 @@ void glfwWindowSizeCallback(GLFWwindow* window, int X,int Y)
 {
     g_windowSize.x = X;
     g_windowSize.y = Y;
-    glViewport(0, 0, g_windowSize.x, g_windowSize.y);
+    RenderEngine::Renderer::setViewport(g_windowSize.x, g_windowSize.y);
 }
 
 //create key action function 
@@ -92,11 +94,11 @@ int main(int argc, char** argv)
     glfwSwapInterval(1);
  
     //add output of information adbout local OpenGL
-    std::cout << "render: " << glGetString(GL_RENDERER) << std::endl;
-    std::cout << "OpenGl Version: " << glGetString(GL_VERSION) << std::endl;
+    std::cout << "render: " << RenderEngine::Renderer::getRendererStr() << std::endl;
+    std::cout << "OpenGl Version: " << RenderEngine::Renderer::getVersionStr() << std::endl;
 
     //background color
-    glClearColor(0, 0, 0, 1);
+    RenderEngine::Renderer::setClearColer(0, 0, 0, 1);
 
     {
 
@@ -113,7 +115,7 @@ int main(int argc, char** argv)
             lastTime = curerentTime;
             g_game.update(duration);
             /* Render here */
-            glClear(GL_COLOR_BUFFER_BIT);
+            RenderEngine::Renderer::clear();
             g_game.render();
 
             /* Swap front and back buffers */

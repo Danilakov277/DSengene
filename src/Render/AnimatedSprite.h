@@ -4,7 +4,7 @@
 #include <map>
 #include <vector>
 
-namespace Renderer
+namespace RenderEngine
 {
 	class Texture2D;
 	class ShaderProgram;

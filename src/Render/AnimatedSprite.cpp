@@ -5,7 +5,7 @@
 #include<iostream>
 #include <glm/mat4x4.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-namespace Renderer
+namespace RenderEngine
 {
     AnimatedSprite::AnimatedSprite(const std::shared_ptr<Texture2D> pTexure,
         const std::string initialSubTexture,
