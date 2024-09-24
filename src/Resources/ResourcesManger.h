@@ -60,6 +60,7 @@ public:
 
 
 	static std::shared_ptr<RenderEngine::Sprite> getSprite(const std::string& spriteName);
+	static bool loadJSONResources(const std::string& JSONPath);
 
 private:
 	static std::string getFileString(const std::string& relatveFilePath);
