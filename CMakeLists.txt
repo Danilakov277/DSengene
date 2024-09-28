@@ -30,6 +30,10 @@ add_executable(${PROJECT_NAME}
 	src/Render/IndexBuffer.h
 	src/Render/Renderer.cpp
 	src/Render/Renderer.h
+	src/Network/Server/Server.cpp
+	src/Network/Server/Server.h
+	src/Network/Client/Client.cpp
+	src/Network/Client/Client.h
 )
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
@@ -43,9 +47,11 @@ target_link_libraries(${PROJECT_NAME} glfw)
 add_subdirectory(external/glad)
 target_link_libraries(${PROJECT_NAME} glad)
 
+
 include_directories(external/glm)
 
 include_directories(external/repidjson/include)
+include_directories(external/sfml/include)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/)
 
