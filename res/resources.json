@@ -240,73 +240,94 @@
 	]
 }
 ],
-"animatedSprites" : [
-{
-		"name" : "tankAnimatedSprite",
-		"textureAtlas" : "tanksTextureAtlas",
-		"shader" : "SpriteShader",
-		"initialWidth" : 100,
-		"initialHeight" : 100,
-		"initialSubTexture" : "yelow_type1_tankTop_1",
-		
-				"states" : [
+	"animatedSprites": [
+		{
+			"name": "tankAnimatedSprite",
+			"textureAtlas": "tanksTextureAtlas",
+			"shader": "SpriteShader",
+			"initialWidth": 100,
+			"initialHeight": 100,
+			"initialSubTexture": "yelow_type1_tankTop_1",
+
+			"states": [
 				{
-					"stateName" : "tankTopState",
-					"frmaes" : [
-					{
-						"subTexture" : "yelow_type1_tankTop_1",
-						"duration" : 50000000
-					},
-					{
-						"subTexture" : "yelow_type1_tankTop_2",
-						"duration" : 50000000
-					}
+					"stateName": "tankTopState",
+					"frmaes": [
+						{
+							"subTexture": "yelow_type1_tankTop_1",
+							"duration": 50000000
+						},
+						{
+							"subTexture": "yelow_type1_tankTop_2",
+							"duration": 50000000
+						}
 					]
 				},
-				
+
 				{
-					"stateName" : "tankBottomState",
-					"frmaes" : [
-					{
-						"subTexture" : "yelow_type1_tankBottom_1",
-						"duration" : 50000000
-					},
-					{
-						"subTexture" : "yelow_type1_tankBottom_2",
-						"duration" : 50000000
-					}
+					"stateName": "tankBottomState",
+					"frmaes": [
+						{
+							"subTexture": "yelow_type1_tankBottom_1",
+							"duration": 50000000
+						},
+						{
+							"subTexture": "yelow_type1_tankBottom_2",
+							"duration": 50000000
+						}
 					]
 				},
-				
+
 				{
-					"stateName" : "tankLeftState",
-					"frmaes" : [
-					{
-						"subTexture" : "yelow_type1_tankLeft_1",
-						"duration" : 50000000
-					},
-					{
-						"subTexture" : "yelow_type1_tankLeft_2",
-						"duration" : 50000000
-					}
+					"stateName": "tankLeftState",
+					"frmaes": [
+						{
+							"subTexture": "yelow_type1_tankLeft_1",
+							"duration": 50000000
+						},
+						{
+							"subTexture": "yelow_type1_tankLeft_2",
+							"duration": 50000000
+						}
 					]
 				},
-				
+
 				{
-					"stateName" : "tankRightState",
-					"frmaes" : [
-					{
-						"subTexture" : "yelow_type1_tankRight_1",
-						"duration" : 50000000
-					},
-					{
-						"subTexture" : "yelow_type1_tankRight_2",
-						"duration" : 50000000
-					}
+					"stateName": "tankRightState",
+					"frmaes": [
+						{
+							"subTexture": "yelow_type1_tankRight_1",
+							"duration": 50000000
+						},
+						{
+							"subTexture": "yelow_type1_tankRight_2",
+							"duration": 50000000
+						}
 					]
 				}
 			]
-}
-]
+		}
+	],
+	"levels": [
+		{
+        "description" : [
+						"DDDDDDDDDDDDD",
+						"D1D1D1D1D1D1D",
+						"D4D4D4D4D4D4D",
+						"D4D4D4D4D4D4D",
+						"D4D4D494D4D4D",
+						"D4D4D3D3D4D4D",
+						"D3D3D1D1D3D3D",
+						"1D11D3D3D11D1",
+						"8D33D1D1D33D8",
+					  "D1D1D444D1D1D",
+					  "D4D4D4D4D4D4D",
+					  "D4D4D3D3D4D4D",
+					  "D4D4H1GDDDDDD",
+					  "DDDDD0E2DDDDD"
+        ]
+		}
+
+	]
 
 }

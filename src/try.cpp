@@ -24,8 +24,8 @@
 
 #include"Render/Renderer.h"
 
-glm::ivec2 g_windowSize(640, 480);
-Game g_game(g_windowSize);
+glm::ivec2 g_windowSize(13*16, 14*16);
+std::unique_ptr<Game>g_game = std::make_unique<Game>(g_windowSize);
 //add call back functon
 void error_callback(int error, const char* description)
 {
@@ -49,7 +49,7 @@ void glfwKeyCallback(GLFWwindow* window, int key, int scanecode, int action, int
     {
         glfwSetWindowShouldClose(window, GL_TRUE);
     }
-    g_game.setKey(key, action);
+    g_game->setKey(key, action);
 }
 
 int main(int argc, char** argv)
@@ -103,7 +103,7 @@ int main(int argc, char** argv)
     {
 
         ResourceManger::setExecutablePath(argv[0]);
-        g_game.init();
+        g_game->init();
         auto lastTime = std::chrono::high_resolution_clock::now();
 
         /* Loop until the user closes the window */
@@ -113,10 +113,10 @@ int main(int argc, char** argv)
             auto curerentTime = std::chrono::high_resolution_clock::now();
             uint64_t duration = std::chrono::duration_cast<std::chrono::nanoseconds>(curerentTime - lastTime).count();
             lastTime = curerentTime;
-            g_game.update(duration);
+            g_game->update(duration);
             /* Render here */
             RenderEngine::Renderer::clear();
-            g_game.render();
+            g_game->render();
 
             /* Swap front and back buffers */
             glfwSwapBuffers(window);
@@ -124,6 +124,7 @@ int main(int argc, char** argv)
             /* Poll for and process events */
             glfwPollEvents();
         }
+        g_game = nullptr;
         ResourceManger::unloadAllResources();
     }
     glfwTerminate();

@@ -18,8 +18,6 @@ add_executable(${PROJECT_NAME}
     src/Render/AnimatedSprite.h
 	src/Game/Game.cpp
 	src/Game/Game.h
-	src/Game/Tank.cpp
-	src/Game/Tank.h
 	src/Render/VertexBuffer.cpp
 	src/Render/VertexBuffer.h
 	src/Render/VertexBufferLayout.h
@@ -30,10 +28,12 @@ add_executable(${PROJECT_NAME}
 	src/Render/IndexBuffer.h
 	src/Render/Renderer.cpp
 	src/Render/Renderer.h
-	src/Network/Server/Server.cpp
-	src/Network/Server/Server.h
-	src/Network/Client/Client.cpp
-	src/Network/Client/Client.h
+	src/Game/GameObjects/Tank.h
+	src/Game/GameObjects/Tank.cpp
+	src/Game/GameObjects/IGameObject.cpp
+	src/Game/GameObjects/IGameObject.h
+	
+
 )
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)

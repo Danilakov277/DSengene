@@ -38,15 +38,11 @@ public:
 	static std::shared_ptr<RenderEngine::Sprite> loadSprite(const std::string& spriteName,
 												 const std::string& textureName,
 												 const std::string& shaderName,
-												 const unsigned int spriteWidth,
-												 const unsigned int spriteHeight,
 		                                         const std::string& subTextureName = "default");
 
 	static std::shared_ptr<RenderEngine::AnimatedSprite> loadAnimatedSprite(const std::string& spriteName,
 		const std::string& textureName,
 		const std::string& shaderName,
-		const unsigned int spriteWidth,
-		const unsigned int spriteHeight,
 		const std::string& subTextureName = "default");
 
 	static std::shared_ptr<RenderEngine::AnimatedSprite> getAnimatedSprite(const std::string& spriteName);

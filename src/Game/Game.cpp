@@ -8,7 +8,7 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/vec2.hpp"
 #include "glm/mat4x4.hpp"
-#include "Tank.h"
+#include "GameObjects/Tank.h"
 #include "GLFW/glfw3.h"
 
 #include <iostream>
@@ -99,18 +99,6 @@ bool Game::init()
         return false;
     }
 
-    auto pAnimatedSprite = ResourceManger::loadAnimatedSprite("NewAnimatedSprite", "mapTextureAtlas", "SpriteShader", 100, 100, "bush");
-    pAnimatedSprite->setPosition(glm::vec2(300.f, 300.f));
-    std::vector<std::pair<std::string, uint64_t>> waterState;
-    waterState.emplace_back(std::make_pair<std::string, uint64_t>("woter_1", 1000000000));
-    waterState.emplace_back(std::make_pair<std::string, uint64_t>("woter_2", 1000000000));
-    waterState.emplace_back(std::make_pair<std::string, uint64_t>("woter_3", 1000000000));
-
-    pAnimatedSprite->insertState("woterState", std::move(waterState));
-
-    pAnimatedSprite->setState("woterState");
-
-
     glm::mat4 projectionMatrix = glm::ortho(0.f, static_cast<float>(m_windowSize.x), 0.f, static_cast<float>(m_windowSize.y), -100.f, 100.f);
 
 
@@ -125,7 +113,7 @@ bool Game::init()
         std::cerr << "Cant find animatedSprite program" << "tankAnimatedSprite" << std::endl;
         return false;
     }
-    m_pTank = std::make_unique<Tank>(pTanksAnimatedSprite, 0.0000005f, glm::vec2(100.f, 100.f));
+    m_pTank = std::make_unique<Tank>(pTanksAnimatedSprite, 0.0000005f, glm::vec2(0), glm::vec2(16.f, 16.f));
 
 
     return true;
