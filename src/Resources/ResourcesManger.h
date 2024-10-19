@@ -58,6 +58,8 @@ public:
 	static std::shared_ptr<RenderEngine::Sprite> getSprite(const std::string& spriteName);
 	static bool loadJSONResources(const std::string& JSONPath);
 
+	static const std::vector<std::vector<std::string>>& getLevels() { return m_levels; }
+
 private:
 	static std::string getFileString(const std::string& relatveFilePath);
 
@@ -72,6 +74,8 @@ private:
 
 	typedef std::map<const std::string, std::shared_ptr<RenderEngine::AnimatedSprite>> AnimatedSpriteeMap;
 	static AnimatedSpriteeMap m_AnimatedSprite;
+
+	static std::vector<std::vector<std::string>> m_levels;
 
 	static std::string m_path;
 

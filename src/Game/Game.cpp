@@ -10,6 +10,7 @@
 #include "glm/mat4x4.hpp"
 #include "GameObjects/Tank.h"
 #include "GLFW/glfw3.h"
+#include "Level.h"
 
 #include <iostream>
 
@@ -30,12 +31,20 @@ void Game::render()
     if (m_pTank) {
         m_pTank->render();
     }
+    if (m_pLevel)
+    {
+        m_pLevel->render();
+    }
+
 }
 
 void Game::update(const uint64_t delta)
 {
     //ResourceManger::getAnimatedSprite("NewAnimatedSprite")->update(delta);
-
+    if (m_pLevel)
+    {
+        m_pLevel->update(delta);
+    }
     if (m_pTank) {
 
         if (m_keys[GLFW_KEY_W] || m_keys[GLFW_KEY_UP])
@@ -114,6 +123,7 @@ bool Game::init()
         return false;
     }
     m_pTank = std::make_unique<Tank>(pTanksAnimatedSprite, 0.0000005f, glm::vec2(0), glm::vec2(16.f, 16.f));
+    m_pLevel = std::make_unique<Level>(ResourceManger::getLevels()[0]);
 
 
     return true;

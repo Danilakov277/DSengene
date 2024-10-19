@@ -26,6 +26,7 @@
  ResourceManger::SpriteMap ResourceManger::m_sprites;
  ResourceManger::AnimatedSpriteeMap ResourceManger::m_AnimatedSprite;
  std::string ResourceManger::m_path;
+ std::vector<std::vector<std::string>> ResourceManger::m_levels;
 
 
 void ResourceManger::setExecutablePath(const std::string& executablePath)
@@ -310,6 +311,39 @@ bool ResourceManger::loadJSONResources(const std::string& JSONPath)
 				}
 			
 
+
+
+
+
+
+
+				auto spritesIT = document.FindMember("sprites");
+				if (spritesIT != document.MemberEnd())
+				{
+					for (const auto& curentSprite : spritesIT->value.GetArray())
+					{
+						const std::string name = curentSprite["name"].GetString();
+						const std::string textureAtlas = curentSprite["textureAtlas"].GetString();
+						const std::string spriteShader = curentSprite["shader"].GetString();
+						const std::string subTexture = curentSprite["subTextureName"].GetString();
+						auto pSpritee = ResourceManger::loadSprite(name, textureAtlas, spriteShader, subTexture);
+						if (!pSpritee)
+						{
+							std::cerr << "cant Load sprite" << name << std::endl;
+							continue;
+						}
+					}
+				}
+
+
+
+
+
+
+
+
+
+
 				auto LevelsIt = document.FindMember("levels");
 				if (LevelsIt != document.MemberEnd())
 				{
@@ -318,10 +352,23 @@ bool ResourceManger::loadJSONResources(const std::string& JSONPath)
 						const auto descriptionArray = curentLevel["description"].GetArray();
 						std::vector<std::string>lewelRows;
 						lewelRows.reserve(descriptionArray.Size());
+						size_t maxLenght = 0;
 						for (const auto& curentLevel : descriptionArray)
 						{
 							lewelRows.emplace_back(curentLevel.GetString());
+							if (maxLenght < lewelRows.back().length())
+							{
+								maxLenght = lewelRows.back().length();
+							}
 						}
+						for (auto& curentLevel : lewelRows)
+						{
+							while (curentLevel.length() < maxLenght)
+							{
+								curentLevel.append("D");
+							}
+						}
+						m_levels.emplace_back(std::move(lewelRows));
 					}
 				}
 		

@@ -15,21 +15,21 @@
 	"subTextureWidth" : 8,
 	"subTextureHeight" : 8,
 	"subTexture" :[
-		"block",
-		"topLeftBlock",
-		"topRightBlock",
-		"topBlock",
-		"bottomLeftBlock",
-		"rightBlock",
-		"bottomLeftTopRightBlock",
-		"bottomRightZeroBlock",
-		"bottomRightBlock",
-		"topLeftBottomRightBlock",
-		"leftBlock",
-		"bottomLeftZerroBlock",
-		"bottomBlock",
-		"topRightZerroBlock",
-		"topLeftZerroBlock",
+		"brickWall",
+		"topLeftbrickWall",
+		"topRightbrickWall",
+		"topbrickWall",
+		"bottomLeftbrickWall",
+		"rightbrickWall",
+		"bottomLeftTopRightbrickWall",
+		"bottomRightZerobrickWall",
+		"bottomRightbrickWall",
+		"topLeftBottomRightbrickWall",
+		"leftbrickWall",
+		"bottomLeftZerrobrickWall",
+		"bottombrickWall",
+		"topRightZerrobrickWall",
+		"topLeftZerrobrickWall",
 		"woter_1",
 		"woter_2",
 		"woter_3",
@@ -240,6 +240,114 @@
 	]
 }
 ],
+
+"sprites":[
+{
+	"name" : "brickWall",
+	"textureAtlas" : "mapTextureAtlas",
+	"shader" : "SpriteShader",
+	"subTextureName" : "brickWall"
+	
+},
+{
+	"name" : "topLeftbrickWall",
+	"textureAtlas" : "mapTextureAtlas",
+	"shader" : "SpriteShader",
+	"subTextureName" : "topLeftbrickWall"
+	
+},
+{
+	"name" : "topRightbrickWall",
+	"textureAtlas" : "mapTextureAtlas",
+	"shader" : "SpriteShader",
+	"subTextureName" : "topRightbrickWall"
+	
+},
+{
+	"name" : "topbrickWall",
+	"textureAtlas" : "mapTextureAtlas",
+	"shader" : "SpriteShader",
+	"subTextureName" : "topbrickWall"
+	
+},
+{
+	"name" : "bottomLeftbrickWall",
+	"textureAtlas" : "mapTextureAtlas",
+	"shader" : "SpriteShader",
+	"subTextureName" : "bottomLeftbrickWall"
+	
+},
+{
+	"name" : "rightbrickWall",
+	"textureAtlas" : "mapTextureAtlas",
+	"shader" : "SpriteShader",
+	"subTextureName" : "rightbrickWall"
+	
+},
+{
+	"name" : "bottomLeftTopRightbrickWall",
+	"textureAtlas" : "mapTextureAtlas",
+	"shader" : "SpriteShader",
+	"subTextureName" : "bottomLeftTopRightbrickWall"
+	
+},
+{
+	"name" : "bottomRightZerobrickWall",
+	"textureAtlas" : "mapTextureAtlas",
+	"shader" : "SpriteShader",
+	"subTextureName" : "bottomRightZerobrickWall"
+	
+},
+{
+	"name" : "bottomRightbrickWall",
+	"textureAtlas" : "mapTextureAtlas",
+	"shader" : "SpriteShader",
+	"subTextureName" : "bottomRightbrickWall"
+	
+},
+{
+	"name" : "topLeftBottomRightbrickWall",
+	"textureAtlas" : "mapTextureAtlas",
+	"shader" : "SpriteShader",
+	"subTextureName" : "topLeftBottomRightbrickWall"
+	
+},
+{
+	"name" : "leftbrickWall",
+	"textureAtlas" : "mapTextureAtlas",
+	"shader" : "SpriteShader",
+	"subTextureName" : "leftbrickWall"
+	
+},
+{
+	"name" : "bottomLeftZerrobrickWall",
+	"textureAtlas" : "mapTextureAtlas",
+	"shader" : "SpriteShader",
+	"subTextureName" : "bottomLeftZerrobrickWall"
+	
+},
+{
+	"name" : "bottombrickWall",
+	"textureAtlas" : "mapTextureAtlas",
+	"shader" : "SpriteShader",
+	"subTextureName" : "bottombrickWall"
+	
+},
+{
+	"name" : "topRightZerrobrickWall",
+	"textureAtlas" : "mapTextureAtlas",
+	"shader" : "SpriteShader",
+	"subTextureName" : "topRightZerrobrickWall"
+	
+},
+{
+	"name" : "topLeftZerrobrickWall",
+	"textureAtlas" : "mapTextureAtlas",
+	"shader" : "SpriteShader",
+	"subTextureName" : "topLeftZerrobrickWall"
+	
+}
+],
 	"animatedSprites": [
 		{
 			"name": "tankAnimatedSprite",
@@ -320,11 +428,11 @@
 						"D3D3D1D1D3D3D",
 						"1D11D3D3D11D1",
 						"8D33D1D1D33D8",
-					  "D1D1D444D1D1D",
-					  "D4D4D4D4D4D4D",
-					  "D4D4D3D3D4D4D",
-					  "D4D4H1GDDDDDD",
-					  "DDDDD0E2DDDDD"
+					    "D1D1D444D1D1D",
+					    "D4D4D4D4D4D4D",
+					    "D4D4D3D3D4D4D",
+					    "D4D4DH1GDDDDD",
+					    "DDDDD0E2DDDDD"
         ]
 		}
 
