@@ -12,7 +12,6 @@ namespace RenderEngine
 	class ShaderProgram;
 	class Texture2D;
 	class Sprite;
-	class AnimatedSprite;
 }
 class ResourceManger
 {
@@ -40,13 +39,6 @@ public:
 												 const std::string& shaderName,
 		                                         const std::string& subTextureName = "default");
 
-	static std::shared_ptr<RenderEngine::AnimatedSprite> loadAnimatedSprite(const std::string& spriteName,
-		const std::string& textureName,
-		const std::string& shaderName,
-		const std::string& subTextureName = "default");
-
-	static std::shared_ptr<RenderEngine::AnimatedSprite> getAnimatedSprite(const std::string& spriteName);
-
 
 	static std::shared_ptr<RenderEngine::Texture2D> loatTextureAtlas(const std::string& textureName,
 		const std::vector<std::string> subTextures,
@@ -71,9 +63,6 @@ private:
 
 	typedef std::map<const std::string, std::shared_ptr<RenderEngine::Sprite>> SpriteMap;
 	static SpriteMap m_sprites;
-
-	typedef std::map<const std::string, std::shared_ptr<RenderEngine::AnimatedSprite>> AnimatedSpriteeMap;
-	static AnimatedSpriteeMap m_AnimatedSprite;
 
 	static std::vector<std::vector<std::string>> m_levels;
 

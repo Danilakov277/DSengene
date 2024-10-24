@@ -16,8 +16,6 @@
 
 #include <vector>
 
-#include "Render/AnimatedSprite.h"
-
 #include <chrono>
 
 #include "Game/Game.h"

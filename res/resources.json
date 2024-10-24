@@ -1,441 +1,469 @@
 {
-	"shaders" : [
-{
-	"name" : "SpriteShader",
-	"filePath_v" : "res/shaders/vSprite.txt",
-	"filePath_f" : "res/shaders/fSprite.txt"
-}
-],
-"textureAtlas" : [
-{
-	"name" : "mapTextureAtlas",
-	"filePath" : "res/textures/map_8x8.png",
-	"width" : 48,
-	"height" : 40,
-	"subTextureWidth" : 8,
-	"subTextureHeight" : 8,
-	"subTexture" :[
-		"brickWall",
-		"topLeftbrickWall",
-		"topRightbrickWall",
-		"topbrickWall",
-		"bottomLeftbrickWall",
-		"rightbrickWall",
-		"bottomLeftTopRightbrickWall",
-		"bottomRightZerobrickWall",
-		"bottomRightbrickWall",
-		"topLeftBottomRightbrickWall",
-		"leftbrickWall",
-		"bottomLeftZerrobrickWall",
-		"bottombrickWall",
-		"topRightZerrobrickWall",
-		"topLeftZerrobrickWall",
-		"woter_1",
-		"woter_2",
-		"woter_3",
-		"beton",
-		"bush"
-	]
-},
-{
-	"name" : "tanksTextureAtlas",
-	"filePath" : "res/textures/tanks.png",
-	"width" : 256,
-	"height" : 256,
-	"subTextureWidth" : 16,
-	"subTextureHeight" : 16,
-	"subTexture" :[
-		"yelow_type1_tankTop_1",
-		"yelow_type1_tankTop_2",
-		"yelow_type1_tankLeft_1",
-		"yelow_type1_tankLeft_2",
-		"yelow_type1_tankBottom_1",
-		"yelow_type1_tankBottom_2",
-		"yelow_type1_tankRight_1",
-		"yelow_type1_tankRight_2",
-		"white_type1_tankTop_1",
-		"white_type1_tankTop_2",
-		"white_type1_tankLeft_1",
-		"white_type1_tankLeft_2",
-		"white_type1_tankBottom_1",
-		"white_type1_tankBottom_2",
-		"white_type1_tankRight_1",
-		"white_type1_tankRight_2",
-		"yelow_type2_tankTop_1",
-		"yelow_type2_tankTop_2",
-		"yelow_type2_tankLeft_1",
-		"yelow_type2_tankLeft_2",
-		"yelow_type2_tankBottom_1",
-		"yelow_type2_tankBottom_2",
-		"yelow_type2_tankRight_1",
-		"yelow_type2_tankRight_2",
-		"white_type2_tankTop_1",
-		"white_type2_tankTop_2",
-		"white_type2_tankLeft_1",
-		"white_type2_tankLeft_2",
-		"white_type2_tankBottom_1",
-		"white_type2_tankBottom_2",
-		"white_type2_tankRight_1",
-		"white_type2_tankRight_2",
-		"yelow_type3_tankTop_1",
-		"yelow_type3_tankTop_2",
-		"yelow_type3_tankLeft_1",
-		"yelow_type3_tankLeft_2",
-		"yelow_type3_tankBottom_1",
-		"yelow_type3_tankBottom_2",
-		"yelow_type3_tankRight_1",
-		"yelow_type3_tankRight_2",
-		"white_type3_tankTop_1",
-		"white_type3_tankTop_2",
-		"white_type3_tankLeft_1",
-		"white_type3_tankLeft_2",
-		"white_type3_tankBottom_1",
-		"white_type3_tankBottom_2",
-		"white_type3_tankRight_1",
-		"white_type3_tankRight_2",
-		"yelow_type4_tankTop_1",
-		"yelow_type4_tankTop_2",
-		"yelow_type4_tankLeft_1",
-		"yelow_type4_tankLeft_2",
-		"yelow_type4_tankBottom_1",
-		"yelow_type4_tankBottom_2",
-		"yelow_type4_tankRight_1",
-		"yelow_type4_tankRight_2",
-		"white_type4_tankTop_1",
-		"white_type4_tankTop_2",
-		"white_type4_tankLeft_1",
-		"white_type4_tankLeft_2",
-		"white_type4_tankBottom_1",
-		"white_type4_tankBottom_2",
-		"white_type4_tankRight_1",
-		"white_type4_tankRight_2",
-		"grean_type1_tankTop_1",
-		"grean_type1_tankTop_2",
-		"grean_type1_tankLeft_1",
-		"grean_type1_tankLeft_2",
-		"grean_type1_tankBottom_1",
-		"grean_type1_tankBottom_2",
-		"grean_type1_tankRight_1",
-		"grean_type1_tankRight_2",
-		"grean_type2_tankTop_1",
-		"grean_type2_tankTop_2",
-		"grean_type2_tankLeft_1",
-		"grean_type2_tankLeft_2",
-		"grean_type2_tankBottom_1",
-		"grean_type2_tankBottom_2",
-		"grean_type2_tankRight_1",
-		"grean_type2_tankRight_2",
-		"grean_type3_tankTop_1",
-		"grean_type3_tankTop_2",
-		"grean_type3_tankLeft_1",
-		"grean_type3_tankLeft_2",
-		"grean_type3_tankBottom_1",
-		"grean_type3_tankBottom_2",
-		"grean_type3_tankRight_1",
-		"grean_type3_tankRight_2",
-		"grean_type4_tankTop_1",
-		"grean_type4_tankTop_2",
-		"grean_type4_tankLeft_1",
-		"grean_type4_tankLeft_2",
-		"grean_type4_tankBottom_1",
-		"grean_type4_tankBottom_2",
-		"grean_type4_tankRight_1",
-		"grean_type4_tankRight_2",
-		"grean_type5_tankTop_1",
-		"grean_type5_tankTop_2",
-		"grean_type5_tankLeft_1",
-		"grean_type5_tankLeft_2",
-		"grean_type5_tankBottom_1",
-		"grean_type5_tankBottom_2",
-		"grean_type5_tankRight_1",
-		"grean_type5_tankRight_2",
-		"grean_type6_tankTop_1",
-		"grean_type6_tankTop_2",
-		"grean_type6_tankLeft_1",
-		"grean_type6_tankLeft_2",
-		"grean_type6_tankBottom_1",
-		"grean_type6_tankBottom_2",
-		"grean_type6_tankRight_1",
-		"grean_type6_tankRight_2",
-		"grean_type7_tankTop_1",
-		"grean_type7_tankTop_2",
-		"grean_type7_tankLeft_1",
-		"grean_type7_tankLeft_2",
-		"grean_type7_tankBottom_1",
-		"grean_type7_tankBottom_2",
-		"grean_type7_tankRight_1",
-		"grean_type7_tankRight_2",
-		"grean_type8_tankTop_1",
-		"grean_type8_tankTop_2",
-		"grean_type8_tankLeft_1",
-		"grean_type8_tankLeft_2",
-		"grean_type8_tankBottom_1",
-		"grean_type8_tankBottom_2",
-		"grean_type8_tankRight_1",
-		"grean_type8_tankRight_2",
-		"red_type1_tankTop_1",
-		"red_type1_tankTop_2",
-		"red_type1_tankLeft_1",
-		"red_type1_tankLeft_2",
-		"red_type1_tankBottom_1",
-		"red_type1_tankBottom_2",
-		"red_type1_tankRight_1",
-		"red_type1_tankRight_2",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase",
-		"red_type2_tankTop_1",
-		"red_type2_tankTop_2",
-		"red_type2_tankLeft_1",
-		"red_type2_tankLeft_2",
-		"red_type2_tankBottom_1",
-		"red_type2_tankBottom_2",
-		"red_type2_tankRight_1",
-		"red_type2_tankRight_2",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase",
-		"red_type3_tankTop_1",
-		"red_type3_tankTop_2",
-		"red_type3_tankLeft_1",
-		"red_type3_tankLeft_2",
-		"red_type3_tankBottom_1",
-		"red_type3_tankBottom_2",
-		"red_type3_tankRight_1",
-		"red_type3_tankRight_2",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase",
-		"red_type4_tankTop_1",
-		"red_type4_tankTop_2",
-		"red_type4_tankLeft_1",
-		"red_type4_tankLeft_2",
-		"red_type4_tankBottom_1",
-		"red_type4_tankBottom_2",
-		"red_type4_tankRight_1",
-		"red_type4_tankRight_2",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase",
-		"whiteSpase"
-	]
-}
-],
-
-"sprites":[
-{
-	"name" : "brickWall",
-	"textureAtlas" : "mapTextureAtlas",
-	"shader" : "SpriteShader",
-	"subTextureName" : "brickWall"
-	
-},
-{
-	"name" : "topLeftbrickWall",
-	"textureAtlas" : "mapTextureAtlas",
-	"shader" : "SpriteShader",
-	"subTextureName" : "topLeftbrickWall"
-	
-},
-{
-	"name" : "topRightbrickWall",
-	"textureAtlas" : "mapTextureAtlas",
-	"shader" : "SpriteShader",
-	"subTextureName" : "topRightbrickWall"
-	
-},
-{
-	"name" : "topbrickWall",
-	"textureAtlas" : "mapTextureAtlas",
-	"shader" : "SpriteShader",
-	"subTextureName" : "topbrickWall"
-	
-},
-{
-	"name" : "bottomLeftbrickWall",
-	"textureAtlas" : "mapTextureAtlas",
-	"shader" : "SpriteShader",
-	"subTextureName" : "bottomLeftbrickWall"
-	
-},
-{
-	"name" : "rightbrickWall",
-	"textureAtlas" : "mapTextureAtlas",
-	"shader" : "SpriteShader",
-	"subTextureName" : "rightbrickWall"
-	
-},
-{
-	"name" : "bottomLeftTopRightbrickWall",
-	"textureAtlas" : "mapTextureAtlas",
-	"shader" : "SpriteShader",
-	"subTextureName" : "bottomLeftTopRightbrickWall"
-	
-},
-{
-	"name" : "bottomRightZerobrickWall",
-	"textureAtlas" : "mapTextureAtlas",
-	"shader" : "SpriteShader",
-	"subTextureName" : "bottomRightZerobrickWall"
-	
-},
-{
-	"name" : "bottomRightbrickWall",
-	"textureAtlas" : "mapTextureAtlas",
-	"shader" : "SpriteShader",
-	"subTextureName" : "bottomRightbrickWall"
-	
-},
-{
-	"name" : "topLeftBottomRightbrickWall",
-	"textureAtlas" : "mapTextureAtlas",
-	"shader" : "SpriteShader",
-	"subTextureName" : "topLeftBottomRightbrickWall"
-	
-},
-{
-	"name" : "leftbrickWall",
-	"textureAtlas" : "mapTextureAtlas",
-	"shader" : "SpriteShader",
-	"subTextureName" : "leftbrickWall"
-	
-},
-{
-	"name" : "bottomLeftZerrobrickWall",
-	"textureAtlas" : "mapTextureAtlas",
-	"shader" : "SpriteShader",
-	"subTextureName" : "bottomLeftZerrobrickWall"
-	
-},
-{
-	"name" : "bottombrickWall",
-	"textureAtlas" : "mapTextureAtlas",
-	"shader" : "SpriteShader",
-	"subTextureName" : "bottombrickWall"
-	
-},
-{
-	"name" : "topRightZerrobrickWall",
-	"textureAtlas" : "mapTextureAtlas",
-	"shader" : "SpriteShader",
-	"subTextureName" : "topRightZerrobrickWall"
-	
-},
-{
-	"name" : "topLeftZerrobrickWall",
-	"textureAtlas" : "mapTextureAtlas",
-	"shader" : "SpriteShader",
-	"subTextureName" : "topLeftZerrobrickWall"
-	
-}
-],
-	"animatedSprites": [
-		{
-			"name": "tankAnimatedSprite",
-			"textureAtlas": "tanksTextureAtlas",
-			"shader": "SpriteShader",
-			"initialWidth": 100,
-			"initialHeight": 100,
-			"initialSubTexture": "yelow_type1_tankTop_1",
-
-			"states": [
-				{
-					"stateName": "tankTopState",
-					"frmaes": [
-						{
-							"subTexture": "yelow_type1_tankTop_1",
-							"duration": 50000000
-						},
-						{
-							"subTexture": "yelow_type1_tankTop_2",
-							"duration": 50000000
-						}
-					]
-				},
-
-				{
-					"stateName": "tankBottomState",
-					"frmaes": [
-						{
-							"subTexture": "yelow_type1_tankBottom_1",
-							"duration": 50000000
-						},
-						{
-							"subTexture": "yelow_type1_tankBottom_2",
-							"duration": 50000000
-						}
-					]
-				},
-
-				{
-					"stateName": "tankLeftState",
-					"frmaes": [
-						{
-							"subTexture": "yelow_type1_tankLeft_1",
-							"duration": 50000000
-						},
-						{
-							"subTexture": "yelow_type1_tankLeft_2",
-							"duration": 50000000
-						}
-					]
-				},
-
-				{
-					"stateName": "tankRightState",
-					"frmaes": [
-						{
-							"subTexture": "yelow_type1_tankRight_1",
-							"duration": 50000000
-						},
-						{
-							"subTexture": "yelow_type1_tankRight_2",
-							"duration": 50000000
-						}
-					]
-				}
-			]
-		}
-	],
-	"levels": [
-		{
-        "description" : [
-						"DDDDDDDDDDDDD",
-						"D1D1D1D1D1D1D",
-						"D4D4D4D4D4D4D",
-						"D4D4D4D4D4D4D",
-						"D4D4D494D4D4D",
-						"D4D4D3D3D4D4D",
-						"D3D3D1D1D3D3D",
-						"1D11D3D3D11D1",
-						"8D33D1D1D33D8",
-					    "D1D1D444D1D1D",
-					    "D4D4D4D4D4D4D",
-					    "D4D4D3D3D4D4D",
-					    "D4D4D111D4D4D",
-					    "DDDDD0E2DDDDD"
-        ]
-		}
-
-	]
-
+  "shaders": [
+    {
+      "name": "SpriteShader",
+      "filePath_v": "res/shaders/vSprite.txt",
+      "filePath_f": "res/shaders/fSprite.txt"
+    }
+  ],
+  "textureAtlas": [
+    {
+      "name": "mapTextureAtlas",
+      "filePath": "res/textures/map_8x8.png",
+      "width": 48,
+      "height": 40,
+      "subTextureWidth": 8,
+      "subTextureHeight": 8,
+      "subTexture": [
+        "brickWall",
+        "topLeftbrickWall",
+        "topRightbrickWall",
+        "topbrickWall",
+        "bottomLeftbrickWall",
+        "rightbrickWall",
+        "bottomLeftTopRightbrickWall",
+        "bottomRightZerobrickWall",
+        "bottomRightbrickWall",
+        "topLeftBottomRightbrickWall",
+        "leftbrickWall",
+        "bottomLeftZerrobrickWall",
+        "bottombrickWall",
+        "topRightZerrobrickWall",
+        "topLeftZerrobrickWall",
+        "woter_1",
+        "woter_2",
+        "woter_3",
+        "beton",
+        "bush",
+        "concreate",
+        "gray_spase",
+        "up_arrow",
+        "botom_arrow",
+        "left_arrow",
+        "right_arrow"
+      ]
+    },
+    {
+      "name": "tanksTextureAtlas",
+      "filePath": "res/textures/tanks.png",
+      "width": 256,
+      "height": 256,
+      "subTextureWidth": 16,
+      "subTextureHeight": 16,
+      "subTexture": [
+        "yelow_type1_tankTop_1",
+        "yelow_type1_tankTop_2",
+        "yelow_type1_tankLeft_1",
+        "yelow_type1_tankLeft_2",
+        "yelow_type1_tankBottom_1",
+        "yelow_type1_tankBottom_2",
+        "yelow_type1_tankRight_1",
+        "yelow_type1_tankRight_2",
+        "white_type1_tankTop_1",
+        "white_type1_tankTop_2",
+        "white_type1_tankLeft_1",
+        "white_type1_tankLeft_2",
+        "white_type1_tankBottom_1",
+        "white_type1_tankBottom_2",
+        "white_type1_tankRight_1",
+        "white_type1_tankRight_2",
+        "yelow_type2_tankTop_1",
+        "yelow_type2_tankTop_2",
+        "yelow_type2_tankLeft_1",
+        "yelow_type2_tankLeft_2",
+        "yelow_type2_tankBottom_1",
+        "yelow_type2_tankBottom_2",
+        "yelow_type2_tankRight_1",
+        "yelow_type2_tankRight_2",
+        "white_type2_tankTop_1",
+        "white_type2_tankTop_2",
+        "white_type2_tankLeft_1",
+        "white_type2_tankLeft_2",
+        "white_type2_tankBottom_1",
+        "white_type2_tankBottom_2",
+        "white_type2_tankRight_1",
+        "white_type2_tankRight_2",
+        "yelow_type3_tankTop_1",
+        "yelow_type3_tankTop_2",
+        "yelow_type3_tankLeft_1",
+        "yelow_type3_tankLeft_2",
+        "yelow_type3_tankBottom_1",
+        "yelow_type3_tankBottom_2",
+        "yelow_type3_tankRight_1",
+        "yelow_type3_tankRight_2",
+        "white_type3_tankTop_1",
+        "white_type3_tankTop_2",
+        "white_type3_tankLeft_1",
+        "white_type3_tankLeft_2",
+        "white_type3_tankBottom_1",
+        "white_type3_tankBottom_2",
+        "white_type3_tankRight_1",
+        "white_type3_tankRight_2",
+        "yelow_type4_tankTop_1",
+        "yelow_type4_tankTop_2",
+        "yelow_type4_tankLeft_1",
+        "yelow_type4_tankLeft_2",
+        "yelow_type4_tankBottom_1",
+        "yelow_type4_tankBottom_2",
+        "yelow_type4_tankRight_1",
+        "yelow_type4_tankRight_2",
+        "white_type4_tankTop_1",
+        "white_type4_tankTop_2",
+        "white_type4_tankLeft_1",
+        "white_type4_tankLeft_2",
+        "white_type4_tankBottom_1",
+        "white_type4_tankBottom_2",
+        "white_type4_tankRight_1",
+        "white_type4_tankRight_2",
+        "grean_type1_tankTop_1",
+        "grean_type1_tankTop_2",
+        "grean_type1_tankLeft_1",
+        "grean_type1_tankLeft_2",
+        "grean_type1_tankBottom_1",
+        "grean_type1_tankBottom_2",
+        "grean_type1_tankRight_1",
+        "grean_type1_tankRight_2",
+        "grean_type2_tankTop_1",
+        "grean_type2_tankTop_2",
+        "grean_type2_tankLeft_1",
+        "grean_type2_tankLeft_2",
+        "grean_type2_tankBottom_1",
+        "grean_type2_tankBottom_2",
+        "grean_type2_tankRight_1",
+        "grean_type2_tankRight_2",
+        "grean_type3_tankTop_1",
+        "grean_type3_tankTop_2",
+        "grean_type3_tankLeft_1",
+        "grean_type3_tankLeft_2",
+        "grean_type3_tankBottom_1",
+        "grean_type3_tankBottom_2",
+        "grean_type3_tankRight_1",
+        "grean_type3_tankRight_2",
+        "grean_type4_tankTop_1",
+        "grean_type4_tankTop_2",
+        "grean_type4_tankLeft_1",
+        "grean_type4_tankLeft_2",
+        "grean_type4_tankBottom_1",
+        "grean_type4_tankBottom_2",
+        "grean_type4_tankRight_1",
+        "grean_type4_tankRight_2",
+        "grean_type5_tankTop_1",
+        "grean_type5_tankTop_2",
+        "grean_type5_tankLeft_1",
+        "grean_type5_tankLeft_2",
+        "grean_type5_tankBottom_1",
+        "grean_type5_tankBottom_2",
+        "grean_type5_tankRight_1",
+        "grean_type5_tankRight_2",
+        "grean_type6_tankTop_1",
+        "grean_type6_tankTop_2",
+        "grean_type6_tankLeft_1",
+        "grean_type6_tankLeft_2",
+        "grean_type6_tankBottom_1",
+        "grean_type6_tankBottom_2",
+        "grean_type6_tankRight_1",
+        "grean_type6_tankRight_2",
+        "grean_type7_tankTop_1",
+        "grean_type7_tankTop_2",
+        "grean_type7_tankLeft_1",
+        "grean_type7_tankLeft_2",
+        "grean_type7_tankBottom_1",
+        "grean_type7_tankBottom_2",
+        "grean_type7_tankRight_1",
+        "grean_type7_tankRight_2",
+        "grean_type8_tankTop_1",
+        "grean_type8_tankTop_2",
+        "grean_type8_tankLeft_1",
+        "grean_type8_tankLeft_2",
+        "grean_type8_tankBottom_1",
+        "grean_type8_tankBottom_2",
+        "grean_type8_tankRight_1",
+        "grean_type8_tankRight_2",
+        "red_type1_tankTop_1",
+        "red_type1_tankTop_2",
+        "red_type1_tankLeft_1",
+        "red_type1_tankLeft_2",
+        "red_type1_tankBottom_1",
+        "red_type1_tankBottom_2",
+        "red_type1_tankRight_1",
+        "red_type1_tankRight_2",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase",
+        "red_type2_tankTop_1",
+        "red_type2_tankTop_2",
+        "red_type2_tankLeft_1",
+        "red_type2_tankLeft_2",
+        "red_type2_tankBottom_1",
+        "red_type2_tankBottom_2",
+        "red_type2_tankRight_1",
+        "red_type2_tankRight_2",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase",
+        "red_type3_tankTop_1",
+        "red_type3_tankTop_2",
+        "red_type3_tankLeft_1",
+        "red_type3_tankLeft_2",
+        "red_type3_tankBottom_1",
+        "red_type3_tankBottom_2",
+        "red_type3_tankRight_1",
+        "red_type3_tankRight_2",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase",
+        "red_type4_tankTop_1",
+        "red_type4_tankTop_2",
+        "red_type4_tankLeft_1",
+        "red_type4_tankLeft_2",
+        "red_type4_tankBottom_1",
+        "red_type4_tankBottom_2",
+        "red_type4_tankRight_1",
+        "red_type4_tankRight_2",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase",
+        "whiteSpase"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "name": "brickWall",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "brickWall"
+    },
+    {
+      "name": "topLeftbrickWall",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "topLeftbrickWall"
+    },
+    {
+      "name": "topRightbrickWall",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "topRightbrickWall"
+    },
+    {
+      "name": "topbrickWall",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "topbrickWall"
+    },
+    {
+      "name": "bottomLeftbrickWall",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "bottomLeftbrickWall"
+    },
+    {
+      "name": "rightbrickWall",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "rightbrickWall"
+    },
+    {
+      "name": "bottomLeftTopRightbrickWall",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "bottomLeftTopRightbrickWall"
+    },
+    {
+      "name": "bottomRightZerobrickWall",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "bottomRightZerobrickWall"
+    },
+    {
+      "name": "bottomRightbrickWall",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "bottomRightbrickWall"
+    },
+    {
+      "name": "topLeftBottomRightbrickWall",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "topLeftBottomRightbrickWall"
+    },
+    {
+      "name": "leftbrickWall",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "leftbrickWall"
+    },
+    {
+      "name": "bottomLeftZerrobrickWall",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "bottomLeftZerrobrickWall"
+    },
+    {
+      "name": "bottombrickWall",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "bottombrickWall"
+    },
+    {
+      "name": "topRightZerrobrickWall",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "topRightZerrobrickWall"
+    },
+    {
+      "name": "topLeftZerrobrickWall",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "topLeftZerrobrickWall"
+    },
+    {
+      "name": "beton_block",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "beton"
+    },
+    {
+      "name": "bush_block",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "bush"
+    },
+    {
+      "name": "grayspase_block",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "gray_spase"
+    },
+    {
+      "name": "woter_sprite",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "woter_1",
+      "frames": [
+        {
+          "subTexture": "woter_1",
+          "duration": 10000000
+        },
+        {
+          "subTexture": "woter_2",
+          "duration": 10000000
+        },
+        {
+          "subTexture": "woter_3",
+          "duration": 10000000
+        }
+      ]
+    },
+    {
+      "name": "topLeftZerrobrickWall",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "topLeftZerrobrickWall"
+    },
+    {
+      "name": "tankTopState",
+      "textureAtlas": "tanksTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "yelow_type1_tankTop_1",
+      "frames": [
+        {
+          "subTexture": "yelow_type1_tankTop_1",
+          "duration": 50000000
+        },
+        {
+          "subTexture": "yelow_type1_tankTop_2",
+          "duration": 50000000
+        }
+      ]
+    },
+    {
+      "name": "tankBottomState",
+      "textureAtlas": "tanksTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "yelow_type1_tankBottom_1",
+      "frames": [
+        {
+          "subTexture": "yelow_type1_tankBottom_1",
+          "duration": 50000000
+        },
+        {
+          "subTexture": "yelow_type1_tankBottom_2",
+          "duration": 50000000
+        }
+      ]
+    },
+    {
+      "name": "tankLeftState",
+      "textureAtlas": "tanksTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "yelow_type1_tankBottom_1",
+      "frames": [
+        {
+          "subTexture": "yelow_type1_tankLeft_1",
+          "duration": 50000000
+        },
+        {
+          "subTexture": "yelow_type1_tankLeft_2",
+          "duration": 50000000
+        }
+      ]
+    },
+    {
+      "name": "tankRightState",
+      "textureAtlas": "tanksTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "yelow_type1_tankBottom_1",
+      "frames": [
+        {
+          "subTexture": "yelow_type1_tankRight_1",
+          "duration": 50000000
+        },
+        {
+          "subTexture": "yelow_type1_tankRight_2",
+          "duration": 50000000
+        }
+      ]
+    }
+  ],
+  "levels": [
+    {
+      "description": [
+        "DDDDDDDDDDDDD",
+        "D1D1D1D1D1D1D",
+        "D4D4D4D4D4D4D",
+        "D4D4D4D4D4D4D",
+        "D4D4D494D4D4D",
+        "D4D4D3D3D4D4D",
+        "D3D3D1D1D3D3D",
+        "1D11D3D3D11D1",
+        "8D33D1D1D33D8",
+        "D1D1D444D1D1D",
+        "D4D4D4D4D4D4D",
+        "D4D4D3D3D4D4D",
+        "D4D4D111D4D4D",
+        "DDDDD0E2DDDDD"
+      ]
+    }
+  ]
 }

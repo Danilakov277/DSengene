@@ -14,8 +14,6 @@ add_executable(${PROJECT_NAME}
     src/Resources/ResourcesManger.cpp
     src/Resources/ResourcesManger.h
     src/Resources/stb_image.h
-    src/Render/AnimatedSprite.cpp
-    src/Render/AnimatedSprite.h
 	src/Game/Game.cpp
 	src/Game/Game.h
 	src/Render/VertexBuffer.cpp
@@ -28,6 +26,8 @@ add_executable(${PROJECT_NAME}
 	src/Render/IndexBuffer.h
 	src/Render/Renderer.cpp
 	src/Render/Renderer.h
+	src/Render/SpriteAnimator.cpp
+	src/Render/SpriteAnimator.h
 	src/Game/GameObjects/Tank.h
 	src/Game/GameObjects/Tank.cpp
 	src/Game/GameObjects/IGameObject.cpp
