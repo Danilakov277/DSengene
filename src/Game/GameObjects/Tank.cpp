@@ -1,16 +1,15 @@
 #include "Tank.h"
 
-Tank::Tank(std::shared_ptr<RenderEngine::Sprite> pSprite_top,
-	std::shared_ptr<RenderEngine::Sprite> pSprite_bottom,
-	std::shared_ptr<RenderEngine::Sprite> pSprite_left,
-	std::shared_ptr<RenderEngine::Sprite> pSprite_right,
+#include "../../Resources/ResourcesManger.h"
+
+Tank::Tank(
 	const float velocity, const glm::vec2& position, const glm::vec2& size):
 	IGameObject(position,size,0.f),
 	m_eOrintation(EOrintation::top),
-	m_pSprite_top(std::move(pSprite_top)),
-	m_pSprite_bottom(std::move(pSprite_bottom)),
-	m_pSprite_left(std::move(pSprite_left)),
-	m_pSprite_right(std::move(pSprite_right)),
+	m_pSprite_top(ResourceManger::getSprite("tankTopState")),
+	m_pSprite_bottom(ResourceManger::getSprite("tankBottomState")),
+	m_pSprite_left(ResourceManger::getSprite("tankLeftState")),
+	m_pSprite_right(ResourceManger::getSprite("tankRightState")),
 	m_spriteAnimator_top(m_pSprite_top),
 	m_spriteAnimator_bottom(m_pSprite_bottom),
 	m_spriteAnimator_left(m_pSprite_left),
