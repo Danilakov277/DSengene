@@ -1,6 +1,7 @@
 #include "Level.h"
 #include "GameObjects/IGameObject.h"
 #include "GameObjects/BrickWall.h"
+#include "GameObjects/BetonWall.h"
 
 #include <iostream>
 
@@ -28,6 +29,20 @@ std::shared_ptr<IGameObject> createdGameObjectFromDescription(const char descrip
 		 return std::make_shared<BrickWall>(BrickWall::EBrickWallType::Top, position, size, rotation);
 	 case'4':
 		 return std::make_shared<BrickWall>(BrickWall::EBrickWallType::All, position, size, rotation);
+
+
+	 case'5':
+		 return std::make_shared<BetonWall>(BetonWall::EBetonWallType::Right, position, size, rotation);
+	 case'6':
+		 return std::make_shared<BetonWall>(BetonWall::EBetonWallType::Bottom, position, size, rotation);
+	 case'7':
+		 return std::make_shared<BetonWall>(BetonWall::EBetonWallType::Left, position, size, rotation);
+	 case'8':
+		 return std::make_shared<BetonWall>(BetonWall::EBetonWallType::Top, position, size, rotation);
+	 case'9':
+		 return std::make_shared<BetonWall>(BetonWall::EBetonWallType::All, position, size, rotation);
+
+
 	 case'D':
 		 return nullptr;
 	default:
