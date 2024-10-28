@@ -35,12 +35,30 @@
         "woter_3",
         "beton",
         "bush",
-        "concreate",
+        "ise",
         "gray_spase",
         "up_arrow",
         "botom_arrow",
         "left_arrow",
         "right_arrow"
+      ]
+    },
+	{
+	"name": "AnimationIventsTextureAtlas",
+      "filePath": "res/textures/map_16x16.png",
+      "width": 128,
+      "height": 64,
+      "subTextureWidth": 16,
+      "subTextureHeight": 16,
+      "subTexture": [
+        "eagle",
+        "eagle_dead",
+        "star_1",
+        "star_2",
+        "star_3",
+        "star_4",
+        "triangle_1",
+        "triangle_2"
       ]
     },
     {
@@ -283,6 +301,24 @@
       "shader": "SpriteShader",
       "initialSubTexture": "rightbrickWall"
     },
+	    {
+      "name": "rightbrickWall",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "rightbrickWall"
+    },
+	    {
+      "name": "eagle",
+      "textureAtlas": "AnimationIventsTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "eagle"
+    },
+	{
+      "name": "eagle_dead",
+      "textureAtlas": "AnimationIventsTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "eagle_dead"
+    },
     {
       "name": "bottomLeftTopRightbrickWall",
       "textureAtlas": "mapTextureAtlas",
@@ -355,6 +391,12 @@
       "shader": "SpriteShader",
       "initialSubTexture": "gray_spase"
     },
+	    {
+      "name": "ise_block",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "ise"
+    },
     {
       "name": "woter_sprite",
       "textureAtlas": "mapTextureAtlas",
@@ -363,15 +405,15 @@
       "frames": [
         {
           "subTexture": "woter_1",
-          "duration": 10000000
+          "duration": 500000000
         },
         {
           "subTexture": "woter_2",
-          "duration": 10000000
+          "duration": 500000000
         },
         {
           "subTexture": "woter_3",
-          "duration": 10000000
+          "duration": 500000000
         }
       ]
     },
@@ -462,6 +504,24 @@
         "D4D4D4D4D4D4D",
         "D4D4D3D3D4D4D",
         "D4D4DH1GD4D4D",
+        "DDDDD0E2DDDDD"
+      ]
+    },
+	{
+      "description": [
+        "DDDDDDDDDDDDD",
+        "D00D11D22D33D",
+        "D0DD1DD2DD3DD",
+        "DDDDDDDDDDDDD",
+        "D44D55D66D77D",
+        "D4DD5DD6DD7DD",
+        "DDDDDDDDDDDDD",
+        "D88D99DAADBBD",
+        "D8DD9DDADDBDD",
+        "DDDDDDDDDDDDD",
+        "DCCDGGDHHDIID",
+        "DCDDGDDHDDIDD",
+        "DDDDDH1GDDJJD",
         "DDDDD0E2DDDDD"
       ]
     }

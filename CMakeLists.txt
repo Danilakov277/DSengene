@@ -36,8 +36,17 @@ add_executable(${PROJECT_NAME}
 	src/Game/GameObjects/BrickWall.h
 	src/Game/GameObjects/BetonWall.cpp
 	src/Game/GameObjects/BetonWall.h
+	src/Game/GameObjects/Trees.h
+	src/Game/GameObjects/Trees.cpp
+	src/Game/GameObjects/Ise.h
+	src/Game/GameObjects/Ise.cpp
+	src/Game/GameObjects/Woter.cpp
+	src/Game/GameObjects/Woter.h
+	src/Game/GameObjects/Eagle.h
+	src/Game/GameObjects/Eagle.cpp
 	src/Game/Level.cpp
 	src/Game/Level.h
+	
 	
 
 )
