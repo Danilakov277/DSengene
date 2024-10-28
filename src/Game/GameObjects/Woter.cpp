@@ -3,8 +3,8 @@
 #include "../../Render/Sprite.h"
 
 
-Woter::Woter(const glm::vec2& position, const glm::vec2& size, const float rotation) :
-	IGameObject(position,size,rotation),
+Woter::Woter(const glm::vec2& position, const glm::vec2& size, const float rotation, const float layer) :
+	IGameObject(position,size,rotation,layer),
 	m_sprites(ResourceManger::getSprite("woter_sprite")),
 	m_spriteAnimator(m_sprites),
 	m_blockOffsets{ glm::vec2(0,m_size.y / 2.f),
@@ -20,7 +20,7 @@ void Woter::renderBlock(const EBlockLocation eBlockLocation) const
 {
 
 
-		m_sprites->render(m_position+m_blockOffsets[static_cast<size_t>(eBlockLocation)], m_size/2.f, m_rotation,m_spriteAnimator.getCurrentFrame());
+		m_sprites->render(m_position+m_blockOffsets[static_cast<size_t>(eBlockLocation)], m_size/2.f, m_rotation,m_layer,m_spriteAnimator.getCurrentFrame());
 	
 }
 

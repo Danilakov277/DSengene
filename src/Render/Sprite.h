@@ -45,7 +45,7 @@ namespace RenderEngine
 
 		void insertFrames(std::vector<FrameDescription> framesDescriptions);
 
-		void render(const glm::vec2& position,const glm::vec2& size, const float rotation, const size_t frameId = 0) const;
+		void render(const glm::vec2& position,const glm::vec2& size, const float rotation, const float layer = 0.f, const size_t frameId = 0) const;
 		uint64_t getFrameDuration(const size_t frameId) const;
 		size_t getFrameCount() const;
 

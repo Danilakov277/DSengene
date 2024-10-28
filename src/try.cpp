@@ -115,6 +115,7 @@ int main(int argc, char** argv)
 
     //background color
     RenderEngine::Renderer::setClearColer(0, 0, 0, 1);
+    RenderEngine::Renderer::setDepthTest(true);
 
     {
 

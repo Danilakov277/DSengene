@@ -59,10 +59,16 @@ namespace RenderEngine {
 		glUniform1i(glGetUniformLocation(ID, name.c_str()), value);
 	}
 
+	void ShaderProgram::setFloat(const std::string& name, const GLfloat value)
+	{
+		glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
+	}
+
 	void ShaderProgram::setMatrix4(const std::string& name, const glm::mat4& matrinx)
 	{
 		glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, glm::value_ptr(matrinx));
 	}
+
 
 	ShaderProgram& ShaderProgram::operator=(ShaderProgram&& shaderProgram) noexcept
 	{
