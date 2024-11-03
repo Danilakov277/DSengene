@@ -6,10 +6,11 @@
 #include "GameObjects/Ise.h"
 #include "GameObjects/Woter.h"
 #include "GameObjects/Eagle.h"
+#include "GameObjects/Border.h"
 
 #include <iostream>
 
-const unsigned int BLOCK_SIZE = 16;
+
 
 std::shared_ptr<IGameObject> createdGameObjectFromDescription(const char description, const glm::vec2& position, const glm::vec2& size, const float rotation)
 {
@@ -79,20 +80,62 @@ Level::Level(const std::vector<std::string>& levelDiscription)
 	m_width = levelDiscription[0].length();
 	m_hight = levelDiscription.size();
 
-	m_mapObjects.reserve(static_cast<size_t>(m_width) * m_hight);
-	unsigned int currentBottomOffset = BLOCK_SIZE * (m_hight - 1);
+	m_playerRespawn_1 = { BLOCK_SIZE * (m_width / 2 - 1),BLOCK_SIZE / 2 };
+	m_playerRespawn_2 = { BLOCK_SIZE * (m_width / 2 + 3),BLOCK_SIZE / 2 };
+
+	m_enemyRespawn_1 = { BLOCK_SIZE,m_hight+(BLOCK_SIZE) - BLOCK_SIZE/2 };
+	m_enemyRespawn_1 = { BLOCK_SIZE*(m_width/2+1),m_hight+(BLOCK_SIZE) - BLOCK_SIZE/2 };
+	m_enemyRespawn_1 = { BLOCK_SIZE * m_width,m_hight + (BLOCK_SIZE)-BLOCK_SIZE / 2};
+
+	m_mapObjects.reserve(static_cast<size_t>(m_width) * m_hight+4);
+	unsigned int currentBottomOffset = BLOCK_SIZE * (m_hight - 1)+BLOCK_SIZE/2.f;
 	for (const std::string& currentRow : levelDiscription)
 	{
-		unsigned int currentLeftOffset = 0;
+		unsigned int currentLeftOffset = BLOCK_SIZE;
 		for (const char currentElement : currentRow)
 		{
 
-		m_mapObjects.emplace_back(	createdGameObjectFromDescription(currentElement, glm::vec2(currentLeftOffset, currentBottomOffset), glm::vec2(BLOCK_SIZE, BLOCK_SIZE),0.f));
+			switch (currentElement)
+			{
+			case 'K':
+				m_playerRespawn_1 = { currentLeftOffset,currentBottomOffset };
+				break;
+			case 'L':
+				m_playerRespawn_2 = { currentLeftOffset,currentBottomOffset };
+				break;
+			case 'M':
+				m_enemyRespawn_1 = { currentLeftOffset,currentBottomOffset };
+				break;
+			case 'N':
+				m_enemyRespawn_2 = { currentLeftOffset,currentBottomOffset };
+				break;
+			case 'O':
+				m_enemyRespawn_3 = { currentLeftOffset,currentBottomOffset };
+				break;
+					
+			default:
+		        m_mapObjects.emplace_back(	createdGameObjectFromDescription(currentElement, glm::vec2(currentLeftOffset, currentBottomOffset), glm::vec2(BLOCK_SIZE, BLOCK_SIZE),0.f));
+				break;
+			}
+
 
 			currentLeftOffset += BLOCK_SIZE;
 		}
 		currentBottomOffset -= BLOCK_SIZE;
 	}
+
+	//bottomborder
+	m_mapObjects.emplace_back(std::make_shared<Border>(glm::vec2(BLOCK_SIZE,0.f),glm::vec2(m_width*BLOCK_SIZE,BLOCK_SIZE/2),0.f,0.f));
+
+	//top border
+	m_mapObjects.emplace_back(std::make_shared<Border>(glm::vec2(BLOCK_SIZE,m_hight*BLOCK_SIZE+BLOCK_SIZE/2.f),glm::vec2(m_width*BLOCK_SIZE,BLOCK_SIZE/2.f),0.f,0.f));
+	
+	//left border
+	m_mapObjects.emplace_back(std::make_shared<Border>(glm::vec2(0.f,0.f),glm::vec2(BLOCK_SIZE,(m_hight+1)*BLOCK_SIZE),0.f,0.f));
+	//right border
+	m_mapObjects.emplace_back(std::make_shared<Border>(glm::vec2((m_width+1)*BLOCK_SIZE,0.f),glm::vec2(2.0f*BLOCK_SIZE, (m_hight + 1) * BLOCK_SIZE),0.f,0.f));
+
+
 
 }
 
@@ -116,4 +159,14 @@ void Level::update(const uint64_t delta)
 			currentMapObject->update(delta);
 		}
 	}
+}
+
+size_t Level::getLevelWidth() const
+{
+	return(m_width + 3) * BLOCK_SIZE;
+}
+
+size_t Level::getLevelHeight() const
+{
+	return (m_hight + 1) * BLOCK_SIZE;
 }
