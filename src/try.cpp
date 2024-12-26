@@ -130,7 +130,7 @@ int main(int argc, char** argv)
         {
 
             auto curerentTime = std::chrono::high_resolution_clock::now();
-            uint64_t duration = std::chrono::duration_cast<std::chrono::nanoseconds>(curerentTime - lastTime).count();
+            double duration = std::chrono::duration<double, std::milli>(curerentTime - lastTime).count();
             lastTime = curerentTime;
             g_game->update(duration);
             /* Render here */

@@ -23,11 +23,11 @@ public:
 	};
 
 	Tank(
-		const float velocity, const glm::vec2& position,const glm::vec2& size, const float layer);
+		const double velocity, const glm::vec2& position,const glm::vec2& size, const float layer);
 	void render() const override;
 	void setOrintation(const EOrintation eOrintation);
 	void move(const bool move);
-	void update(const uint64_t delta) override;
+	void update(const double delta) override;
 
 private:
 	EOrintation m_eOrintation;
@@ -40,6 +40,6 @@ private:
 	RenderEngine::SpriteAnimator m_spriteAnimator_left;
 	RenderEngine::SpriteAnimator m_spriteAnimator_right;
 	bool m_move;
-	float m_velocity;
+	double m_velocity;
 	glm::vec2 m_moveOffset;
 };

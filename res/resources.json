@@ -405,15 +405,15 @@
       "frames": [
         {
           "subTexture": "woter_1",
-          "duration": 500000000
+          "duration": 200
         },
         {
           "subTexture": "woter_2",
-          "duration": 500000000
+          "duration": 200
         },
         {
           "subTexture": "woter_3",
-          "duration": 500000000
+          "duration": 200
         }
       ]
     },
@@ -431,11 +431,11 @@
       "frames": [
         {
           "subTexture": "yelow_type1_tankTop_1",
-          "duration": 50000000
+          "duration": 200
         },
         {
           "subTexture": "yelow_type1_tankTop_2",
-          "duration": 50000000
+          "duration": 200
         }
       ]
     },
@@ -447,11 +447,11 @@
       "frames": [
         {
           "subTexture": "yelow_type1_tankBottom_1",
-          "duration": 50000000
+          "duration": 200
         },
         {
           "subTexture": "yelow_type1_tankBottom_2",
-          "duration": 50000000
+          "duration": 200
         }
       ]
     },
@@ -463,11 +463,11 @@
       "frames": [
         {
           "subTexture": "yelow_type1_tankLeft_1",
-          "duration": 50000000
+          "duration": 200
         },
         {
           "subTexture": "yelow_type1_tankLeft_2",
-          "duration": 50000000
+          "duration": 200
         }
       ]
     },
@@ -479,11 +479,11 @@
       "frames": [
         {
           "subTexture": "yelow_type1_tankRight_1",
-          "duration": 50000000
+          "duration": 200
         },
         {
           "subTexture": "yelow_type1_tankRight_2",
-          "duration": 50000000
+          "duration": 200
         }
       ]
     }

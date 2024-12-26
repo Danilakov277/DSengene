@@ -3,7 +3,7 @@
 #include "../../Resources/ResourcesManger.h"
 
 Tank::Tank(
-	const float velocity, const glm::vec2& position, const glm::vec2& size, const float layer):
+	const double velocity, const glm::vec2& position, const glm::vec2& size, const float layer):
 	IGameObject(position,size,0.f,layer),
 	m_eOrintation(EOrintation::top),
 	m_pSprite_top(ResourceManger::getSprite("tankTopState")),
@@ -76,11 +76,13 @@ void Tank::move(const bool move)
 	m_move = move;
 }
 
-void Tank::update(const uint64_t delta)
+void Tank::update(const double delta)
 {
 	if (m_move)
 	{
-		m_position += delta * m_velocity * m_moveOffset;
+		m_position.y += static_cast<float>( delta * m_velocity * m_moveOffset.y);
+		m_position.x += static_cast<float>( delta * m_velocity * m_moveOffset.x);
+		
 
 		switch (m_eOrintation)
 		{

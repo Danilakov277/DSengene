@@ -33,7 +33,7 @@ void Woter::render() const
 	renderBlock(EBlockLocation::TopRight);
 }
 
-void Woter::update(const uint64_t delta)
+void Woter::update(const double delta)
 {
 	m_spriteAnimator.update(delta);
 }

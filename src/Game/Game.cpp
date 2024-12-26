@@ -32,12 +32,12 @@ void Game::render()
     }
     if (m_pLevel)
     {
-        m_pLevel->render();
+        m_pLevel->render(); 
     }
 
 }
 
-void Game::update(const uint64_t delta)
+void Game::update(const double delta)
 {
     //ResourceManger::getAnimatedSprite("NewAnimatedSprite")->update(delta);
     if (m_pLevel)
@@ -104,7 +104,7 @@ bool Game::init()
 
 
 
-    m_pTank = std::make_unique<Tank>(0.00000002f, m_pLevel->getPlayerRespawn_1(), glm::vec2(Level::BLOCK_SIZE, Level::BLOCK_SIZE), 0.f);
+    m_pTank = std::make_unique<Tank>(0.02, m_pLevel->getPlayerRespawn_1(), glm::vec2(Level::BLOCK_SIZE, Level::BLOCK_SIZE), 0.f);
 
 
     return true;
