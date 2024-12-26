@@ -459,7 +459,7 @@
       "name": "tankLeftState",
       "textureAtlas": "tanksTextureAtlas",
       "shader": "SpriteShader",
-      "initialSubTexture": "yelow_type1_tankBottom_1",
+      "initialSubTexture": "yelow_type1_tankLeft_1",
       "frames": [
         {
           "subTexture": "yelow_type1_tankLeft_1",
@@ -475,7 +475,7 @@
       "name": "tankRightState",
       "textureAtlas": "tanksTextureAtlas",
       "shader": "SpriteShader",
-      "initialSubTexture": "yelow_type1_tankBottom_1",
+      "initialSubTexture": "yelow_type1_tankRight_1",
       "frames": [
         {
           "subTexture": "yelow_type1_tankRight_1",
