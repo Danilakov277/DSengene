@@ -22,6 +22,8 @@
 
 #include"Render/Renderer.h"
 
+#include"Physics/PhysicsEngine.h"
+
 glm::ivec2 g_windowSize(13*16, 14*16);
 std::unique_ptr<Game>g_game = std::make_unique<Game>(g_windowSize);
 //add call back functon
@@ -71,7 +73,7 @@ void glfwKeyCallback(GLFWwindow* window, int key, int scanecode, int action, int
 
 int main(int argc, char** argv)
 {
-   
+
     GLFWwindow* window;
      
     //set call back function
@@ -121,6 +123,7 @@ int main(int argc, char** argv)
     {
 
         ResourceManger::setExecutablePath(argv[0]);
+        Physics::PhysicsEngine::init();
         g_game->init();
         glfwSetWindowSize(window,static_cast<int>( g_game->getCurrentLevelWidth()),static_cast<int>( g_game->getCurrentLevelHeight()));
         auto lastTime = std::chrono::high_resolution_clock::now();
@@ -133,6 +136,7 @@ int main(int argc, char** argv)
             double duration = std::chrono::duration<double, std::milli>(curerentTime - lastTime).count();
             lastTime = curerentTime;
             g_game->update(duration);
+            Physics::PhysicsEngine::update(duration);
             /* Render here */
             RenderEngine::Renderer::clear();
             g_game->render();

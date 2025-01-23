@@ -319,6 +319,46 @@
       "shader": "SpriteShader",
       "initialSubTexture": "eagle_dead"
     },
+	{
+      "name": "respown_animation",
+      "textureAtlas": "AnimationIventsTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "star_1",
+	  "frames": [
+	    {
+          "subTexture": "star_1",
+          "duration": 200
+        },
+        {
+          "subTexture": "star_2",
+          "duration": 200
+        },
+        {
+          "subTexture": "star_3",
+          "duration": 200
+        },
+        {
+          "subTexture": "star_4",
+          "duration": 200
+        }
+      ]
+    },
+	{
+      "name": "shild_animation",
+      "textureAtlas": "AnimationIventsTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "triangle_1",
+	  "frames": [
+	    {
+          "subTexture": "triangle_1",
+          "duration": 200
+        },
+        {
+          "subTexture": "triangle_2",
+          "duration": 200
+        }
+      ]
+    },
     {
       "name": "bottomLeftTopRightbrickWall",
       "textureAtlas": "mapTextureAtlas",

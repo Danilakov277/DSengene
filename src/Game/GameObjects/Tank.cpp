@@ -3,40 +3,68 @@
 #include "../../Resources/ResourcesManger.h"
 
 Tank::Tank(
-	const double velocity, const glm::vec2& position, const glm::vec2& size, const float layer):
+	const double maxVelocity, const glm::vec2& position, const glm::vec2& size, const float layer):
 	IGameObject(position,size,0.f,layer),
 	m_eOrintation(EOrintation::top),
 	m_pSprite_top(ResourceManger::getSprite("tankTopState")),
 	m_pSprite_bottom(ResourceManger::getSprite("tankBottomState")),
 	m_pSprite_left(ResourceManger::getSprite("tankLeftState")),
 	m_pSprite_right(ResourceManger::getSprite("tankRightState")),
+	m_pSprite_respawn(ResourceManger::getSprite("respown_animation")),
+	m_pSprite_shild(ResourceManger::getSprite("shild_animation")),
 	m_spriteAnimator_top(m_pSprite_top),
 	m_spriteAnimator_bottom(m_pSprite_bottom),
 	m_spriteAnimator_left(m_pSprite_left),
 	m_spriteAnimator_right(m_pSprite_right),
-	m_move(false),
-	m_velocity(velocity),
-	m_moveOffset(glm::vec2(0.f,1.f))
+	m_spriteAnimator_respawn(m_pSprite_respawn),
+	m_spriteAnimator_shild(m_pSprite_shild),
+	m_maxVelocity(maxVelocity),
+	m_isSpawning(true),
+	m_isShild(false)
 {
+	m_spawnTimer.setCallback([&]()
+		{
+			m_isSpawning = false;
+			m_isShild = true;
+			m_shildTimer.start(2000);
 
+		});
+	m_spawnTimer.start(2000);
+	m_shildTimer.setCallback([&]()
+	    {
+			m_isShild = false; 
+		});
+	m_colliders.emplace_back(glm::vec2(0), m_size);
 }
+
 
 void Tank::render() const
 {
-	switch (m_eOrintation)
+	if (m_isSpawning)
 	{
-	case Tank::EOrintation::top:
-		m_pSprite_top->render(m_position, m_size, m_rotation, m_layer, m_spriteAnimator_top.getCurrentFrame());
-		break;
-	case Tank::EOrintation::Bottom:
-		m_pSprite_bottom->render(m_position, m_size, m_rotation, m_layer, m_spriteAnimator_bottom.getCurrentFrame());
-		break;
-	case Tank::EOrintation::Left:
-		m_pSprite_left->render(m_position, m_size, m_rotation, m_layer, m_spriteAnimator_left.getCurrentFrame());
-		break;
-	case Tank::EOrintation::Right:
-		m_pSprite_right->render(m_position, m_size, m_rotation, m_layer, m_spriteAnimator_right.getCurrentFrame());
-		break;
+		m_pSprite_respawn->render(m_position, m_size, m_rotation, m_layer, m_spriteAnimator_respawn.getCurrentFrame());
+	}
+	else {
+
+		switch (m_eOrintation)
+		{
+		case Tank::EOrintation::top:
+			m_pSprite_top->render(m_position, m_size, m_rotation, m_layer, m_spriteAnimator_top.getCurrentFrame());
+			break;
+		case Tank::EOrintation::Bottom:
+			m_pSprite_bottom->render(m_position, m_size, m_rotation, m_layer, m_spriteAnimator_bottom.getCurrentFrame());
+			break;
+		case Tank::EOrintation::Left:
+			m_pSprite_left->render(m_position, m_size, m_rotation, m_layer, m_spriteAnimator_left.getCurrentFrame());
+			break;
+		case Tank::EOrintation::Right:
+			m_pSprite_right->render(m_position, m_size, m_rotation, m_layer, m_spriteAnimator_right.getCurrentFrame());
+			break;
+		}
+		if (m_isShild)
+		{
+			m_pSprite_shild->render(m_position, m_size, m_rotation, m_layer + 0.1f, m_spriteAnimator_shild.getCurrentFrame());
+		}
 	}
 
 }
@@ -51,54 +79,72 @@ void Tank::setOrintation(const EOrintation eOrintation)
 	switch (m_eOrintation)
 	{
 	case Tank::EOrintation::top:
-		m_moveOffset.x = 0.f;
-		m_moveOffset.y = 1.f;
+		m_direction.x = 0.f;
+		m_direction.y = 1.f;
 		break;
 	case Tank::EOrintation::Bottom:
-		m_moveOffset.x = 0.f;
-		m_moveOffset.y = -1.f;
+		m_direction.x = 0.f;
+		m_direction.y = -1.f;
 		break;
 	case Tank::EOrintation::Left:
-		m_moveOffset.x = -1.f;
-		m_moveOffset.y = 0.f;
+		m_direction.x = -1.f;
+		m_direction.y = 0.f;
 		break;
 	case Tank::EOrintation::Right:
-		m_moveOffset.x = 1.f;
-		m_moveOffset.y = 0.f;
+		m_direction.x = 1.f;
+		m_direction.y = 0.f;
 		break;
 	default:
 		break;
 	}
 }
 
-void Tank::move(const bool move)
-{
-	m_move = move;
-}
-
 void Tank::update(const double delta)
 {
-	if (m_move)
+
+	if (m_isSpawning)
 	{
-		m_position.y += static_cast<float>( delta * m_velocity * m_moveOffset.y);
-		m_position.x += static_cast<float>( delta * m_velocity * m_moveOffset.x);
-		
+		m_spriteAnimator_respawn.update(delta);
+		m_spawnTimer.update(delta);
+	}
+	else {
 
-		switch (m_eOrintation)
+		if (m_isShild)
 		{
-		case Tank::EOrintation::top:
-			m_spriteAnimator_top.update(delta);
-			break;
-		case Tank::EOrintation::Bottom:
-			m_spriteAnimator_bottom.update(delta);
-			break;
-		case Tank::EOrintation::Left:
-			m_spriteAnimator_left.update(delta);
-			break;
-		case Tank::EOrintation::Right:
-			m_spriteAnimator_right.update(delta);
-			break;
+			m_spriteAnimator_shild.update(delta);
+			m_shildTimer.update(delta);
 		}
+		if (m_velocity > 0)
+		{
+			switch (m_eOrintation)
+			{
+			case Tank::EOrintation::top:
+				m_spriteAnimator_top.update(delta);
+				break;
+			case Tank::EOrintation::Bottom:
+				m_spriteAnimator_bottom.update(delta);
+				break;
+			case Tank::EOrintation::Left:
+				m_spriteAnimator_left.update(delta);
+				break;
+			case Tank::EOrintation::Right:
+				m_spriteAnimator_right.update(delta);
+				break;
+			}
 
+		}
+	}
+}
+
+double Tank::getMaxVelocity() const
+{
+	return m_maxVelocity;
+}
+
+void Tank::setVelocity(const double velocity)
+{
+	if (!m_isSpawning)
+	{
+		m_velocity = velocity;
 	}
 }

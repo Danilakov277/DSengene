@@ -9,7 +9,7 @@ Eagle::Eagle(const glm::vec2& position, const glm::vec2& size, const float rotat
 	m_eCurrentState(EEagleState::Alive)
 
 {
-	
+	m_colliders.emplace_back(glm::vec2(0), m_size);
 
 }
 

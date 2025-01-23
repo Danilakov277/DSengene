@@ -8,7 +8,7 @@ Border::Border(const glm::vec2& position, const glm::vec2& size, const float rot
 	m_sprites(ResourceManger::getSprite("border_block"))
 {
 	
-
+	m_colliders.emplace_back(glm::vec2(0), m_size);
 }
 
 
