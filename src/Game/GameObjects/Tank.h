@@ -12,6 +12,7 @@ namespace RenderEngine
 {
 	class Sprite;
 }
+class Bullet;
 class Tank:public IGameObject
 {
 public:
@@ -31,9 +32,11 @@ public:
 	void update(const double delta) override;
 	double getMaxVelocity() const;
 	void setVelocity(const double velocity) override;
+	void fire();
 
 private:
 	EOrintation m_eOrintation;
+	std::shared_ptr<Bullet> m_pCurrentBullet;
 	std::shared_ptr<RenderEngine::Sprite> m_pSprite_top;
 	std::shared_ptr<RenderEngine::Sprite> m_pSprite_bottom;
 	std::shared_ptr<RenderEngine::Sprite> m_pSprite_left;

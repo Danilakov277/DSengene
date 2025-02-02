@@ -4,7 +4,7 @@
 
 
 Woter::Woter(const glm::vec2& position, const glm::vec2& size, const float rotation, const float layer) :
-	IGameObject(position,size,rotation,layer),
+	IGameObject(IGameObject::EObjectType::Water,position,size,rotation,layer),
 	m_sprites(ResourceManger::getSprite("woter_sprite")),
 	m_spriteAnimator(m_sprites),
 	m_blockOffsets{ glm::vec2(0,m_size.y / 2.f),
@@ -36,5 +36,9 @@ void Woter::render() const
 void Woter::update(const double delta)
 {
 	m_spriteAnimator.update(delta);
+}
+bool Woter::collides(const EObjectType objectType)
+{
+	return objectType != IGameObject::EObjectType::Bullet;
 }
 

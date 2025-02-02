@@ -58,7 +58,23 @@
         "star_3",
         "star_4",
         "triangle_1",
-        "triangle_2"
+        "triangle_2",
+		"big_explosion_1",
+		"big_explosion_2",
+		"big_explosion_3",
+		"big_explosion_4",
+		"explosion_1",
+		"explosion_2",
+		"explosion_3",
+		"whiteSpase",
+		"big_explosion_5",
+		"big_explosion_6",
+		"big_explosion_7",
+		"big_explosion_8",
+		"whiteSpase",
+		"whiteSpase",
+		"whiteSpase",
+		"whiteSpase"
       ]
     },
     {
@@ -289,6 +305,54 @@
       "shader": "SpriteShader",
       "initialSubTexture": "topbrickWall"
     },
+	{
+      "name": "bullet_Top",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "up_arrow"
+    },
+	{
+      "name": "bullet_Bottom",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "botom_arrow"
+    },
+	{
+      "name": "bullet_Left",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "left_arrow"
+    },
+	{
+      "name": "bullet_Right",
+      "textureAtlas": "mapTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "right_arrow"
+    },
+	
+	
+	
+	{
+      "name": "explosion",
+      "textureAtlas": "AnimationIventsTextureAtlas",
+      "shader": "SpriteShader",
+      "initialSubTexture": "explosion_1",
+	  "frames": [
+	    {
+          "subTexture": "explosion_1",
+          "duration": 200
+        },
+        {
+          "subTexture": "explosion_2",
+          "duration": 200
+        },
+        {
+          "subTexture": "explosion_3",
+          "duration": 200
+        }
+      ]
+    },
+	
     {
       "name": "bottomLeftbrickWall",
       "textureAtlas": "mapTextureAtlas",

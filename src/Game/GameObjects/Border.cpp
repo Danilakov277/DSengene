@@ -4,7 +4,7 @@
 
 
 Border::Border(const glm::vec2& position, const glm::vec2& size, const float rotation, const float layer) :
-	IGameObject(position,size,rotation,layer),
+	IGameObject(IGameObject::EObjectType::Border,position,size,rotation,layer),
 	m_sprites(ResourceManger::getSprite("border_block"))
 {
 	

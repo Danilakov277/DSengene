@@ -4,7 +4,7 @@
 
 
 BetonWall::BetonWall(const EBetonWallType eBlockWallType, const glm::vec2& position, const glm::vec2& size, const float rotation, const float layer) :
-	IGameObject(position,size,rotation,layer),
+	IGameObject(IGameObject::EObjectType::BetonWall, position,size,rotation,layer),
 	m_eCurrentBlockState{ EBlockState::Destroyed, EBlockState::Destroyed, EBlockState::Destroyed, EBlockState::Destroyed},
 	m_sprites(ResourceManger::getSprite("beton_block")),
 	m_blockOffsets{ glm::vec2(0,m_size.y / 2.f),
