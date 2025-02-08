@@ -340,15 +340,15 @@
 	  "frames": [
 	    {
           "subTexture": "explosion_1",
-          "duration": 200
+          "duration": 100
         },
         {
           "subTexture": "explosion_2",
-          "duration": 200
+          "duration": 100
         },
         {
           "subTexture": "explosion_3",
-          "duration": 200
+          "duration": 100
         }
       ]
     },
